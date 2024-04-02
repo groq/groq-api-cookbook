@@ -1,4 +1,4 @@
-# ![Screenshot 2024-03-25 at 11 26 53 AM (1)](https://github.com/groq/groq-api-cookbook/assets/139392640/5a8c486b-5444-455b-a83b-6d4c04874e77) Groq API Cookbook
+# ![groq-logo](images/groq-logo.png) Groq API Cookbook
 
 Are you ready to cook? 🚀 This is a collection of example code and guides for Groq API for you to explore. To run these examples, you'll need a Groq API key that you can get for free by creating an account [here](https://console.groq.com/). 
 
