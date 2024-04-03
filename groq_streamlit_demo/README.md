@@ -16,7 +16,7 @@ It is blazing FAST; try it and see! 🏎️ 💨 💨 💨
 
 ## Features
 
-- **Model Selection**: Users can select between `mixtral-8x7b-32768` and `llama2-70b-4096` models to tailor the conversation according to the capabilities of each model.
+- **Model Selection**: Users can select between `mixtral-8x7b-32768`, `llama2-70b-4096`, and `gemma-7b-it` models to tailor the conversation according to the capabilities of each model.
 - **Chat History**: The app maintains a session-based chat history, allowing for a continuous conversation flow during the app session.
 - **Dynamic Response Generation**: Utilizes a generator function to stream responses from the Groq API, providing a seamless chat experience.
 - **Error Handling**: Implements try-except blocks to gracefully handle potential errors during API calls.
