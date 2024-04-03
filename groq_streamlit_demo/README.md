@@ -2,11 +2,11 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://groqdemo.streamlit.app/)
 
-![Demo App Screenshot](/images/groq_demo.png)
+![Demo App Screenshot](images/groq_demo.png)
 
 This [Streamlit](https://streamlit.io/) app integrates with the [Groq API](https://groq.com/) to provide a chat interface where users can interact with advanced language models. It allows users to choose between two models for generating responses, enhancing the flexibility and user experience of the chat application.
 
-It is blazing FAST, try it and see! 🏎️ 💨 💨 💨
+It is blazing FAST; try it and see! 🏎️ 💨 💨 💨
 
 **Check out the video tutorial 👇**
 
@@ -41,7 +41,7 @@ It is blazing FAST, try it and see! 🏎️ 💨 💨 💨
 
   ```toml
   # .streamlit/secrets.toml
-  GROQ_API_KEY="your_api_key_here"
+  GROQ_API_KEY="your_groq_api_key_here"
   ```
 
 - **Run the App**:
