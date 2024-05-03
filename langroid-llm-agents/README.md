@@ -44,6 +44,7 @@ agent_config = lr.ChatAgentConfig(
 
 agent = lr.ChatAgent(agent_config)
 task = lr.Task(agent, interactive=True)
+task.run()
 ```
 
 An example script showing a 2-agent assistant is included in this folder.
