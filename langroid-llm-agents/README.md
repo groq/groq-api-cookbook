@@ -22,7 +22,6 @@ GROQ_API_KEY=gsk_...
 Or you can set explicitly set this key in your environment before 
 running the scripts.
 
-```bash
 Below is a bare-bones code example.
 
 ```python
