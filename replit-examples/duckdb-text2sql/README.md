@@ -1,6 +1,6 @@
 # DuckDB Text-to-SQL
 
-This repository builds a command line application that allows users to ask questions about their DuckDB data. The application uses the Groq API to generate SQL queries based on the user's questions and execute them on a DuckDB database.
+A command line application that allows users to ask questions about their DuckDB data. The application uses the Groq API to generate SQL queries based on the user's questions and execute them on a DuckDB database.
 
 ## Features
 

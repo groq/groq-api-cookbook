@@ -1,6 +1,6 @@
 # DuckDB Query Retriever
 
-This repository contains a command line application that allows users to ask questions about their DuckDB data using the Groq API. The application uses pre-verified SQL queries and their descriptions stored in YAML files to find the most similar query to the user's question, execute it against the data, and return the results (if a prompt is not similar to a vetted query, no data will be returned).
+A command line application that allows users to ask questions about their DuckDB data using the Groq API. The application uses pre-verified SQL queries and their descriptions stored in YAML files to find the most similar query to the user's question, execute it against the data, and return the results (if a prompt is not similar to a vetted query, no data will be returned).
 
 ## Features
 
