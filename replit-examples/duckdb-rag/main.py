@@ -1,6 +1,6 @@
 import os
 from groq import Groq
-from sentence_transformers import SentenceTransformer
+from langchain_community.embeddings.sentence_transformer import SentenceTransformerEmbeddings
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import duckdb
@@ -24,7 +24,7 @@ def get_verified_queries_and_embeddings(directory_path, embedding_model):
             try:
                 file_name = file[len(directory_path):-5]
                 verified_queries_dict[file_name] = yaml.safe_load(stream)
-                verified_queries_dict[file_name]['embeddings'] = embedding_model.encode(verified_queries_dict[file_name]['description'])
+                verified_queries_dict[file_name]['embeddings'] = embedding_model.embed_query(verified_queries_dict[file_name]['description'])
             except yaml.YAMLError as exc:
                 continue
 
@@ -40,7 +40,7 @@ def get_verified_sql(embedding_model,user_question,verified_queries_dict,minimum
     """
 
     # Get embeddings for user question
-    prompt_embeddings = embedding_model.encode(user_question)
+    prompt_embeddings = embedding_model.embed_query(user_question)
 
     # Calculate embedding similarity for verified queries using cosine similarity
     embeddings_list = [data["embeddings"] for prompt, data in verified_queries_dict.items()]
@@ -141,7 +141,7 @@ def main():
     )
 
     # Initialize the SentenceTransformer model
-    embedding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+    embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
 
     # Display the title and introduction of the application
     multiline_text = """
