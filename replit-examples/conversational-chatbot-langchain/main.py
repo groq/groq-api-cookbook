@@ -1,7 +1,5 @@
-import streamlit as st
 import os
 from groq import Groq
-import random
 
 from langchain.chains import ConversationChain, LLMChain
 from langchain_core.prompts import (

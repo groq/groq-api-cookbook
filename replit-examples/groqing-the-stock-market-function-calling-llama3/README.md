@@ -18,4 +18,6 @@ The function calling in this application is handled by the Groq API, abstracted 
 
 ## Usage
 
-You can [fork and run this application on Replit](https://replit.com/@GroqCloud/Groqing-the-stock-market) or run it on the command line with `python main.py`
+You will need to store a valid Groq API Key as a secret to proceed with this example. You can generate one for free [here](https://console.groq.com/keys).
+
+You can [fork and run this application on Replit](https://replit.com/@GroqCloud/Groqing-the-Stock-Market-Function-Calling-with-Llama3) or run it on the command line with `python main.py`.

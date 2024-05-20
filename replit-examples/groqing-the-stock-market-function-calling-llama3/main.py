@@ -22,7 +22,6 @@ def get_stock_info(symbol, key):
     stock_info = data.info
     return stock_info[key]
 
-
 @tool
 def get_historical_price(symbol, start_date, end_date):
     """
@@ -39,10 +38,15 @@ def get_historical_price(symbol, start_date, end_date):
     return hist[['Date', symbol]]
 
 def plot_price_over_time(historical_price_dfs):
+    '''
+    Plots the historical stock prices over time for the given DataFrames.
 
-    full_df = pd.DataFrame(columns = ['Date'])
+    Parameters:
+    historical_price_dfs (list): List of DataFrames containing historical stock prices.
+    '''
+    full_df = pd.DataFrame(columns=['Date'])
     for df in historical_price_dfs:
-        full_df = full_df.merge(df, on = 'Date', how = 'outer')
+        full_df = full_df.merge(df, on='Date', how='outer')
 
     # Create a Plotly figure
     fig = go.Figure()
@@ -79,11 +83,22 @@ def plot_price_over_time(historical_price_dfs):
 
     # Show the figure
     fig.write_image("plot.png")
-    # Display the image in the terminal
-    print(f"![Plot](plot.png)")
+
 
 def call_functions(llm_with_tools, user_prompt):
-    system_prompt = 'You are a helpful finance assistant that analyzes stocks and stock prices. Today is {today}'.format(today = date.today())
+    '''
+    Call the functions to interact with the llm_with_tools using the given user_prompt.
+    This function processes the user input, invokes tools based on the input, performs necessary operations,
+    generates responses or messages, and plots historical stock prices over time.
+
+    Parameters:
+    llm_with_tools (ChatGroq): ChatGroq object containing the tools for interaction.
+    user_prompt (str): User input prompt.
+
+    Returns:
+    str: Contents of the invoked messages through llm_with_tools interaction.
+    '''
+    system_prompt = 'You are a helpful finance assistant that analyzes stocks and stock prices. Today is {today}'.format(today=date.today())
 
     messages = [SystemMessage(system_prompt), HumanMessage(user_prompt)]
     ai_msg = llm_with_tools.invoke(messages)
@@ -108,22 +123,17 @@ def call_functions(llm_with_tools, user_prompt):
     return llm_with_tools.invoke(messages).content
 
 
-def main():
 
-    llm = ChatGroq(groq_api_key = os.getenv('GROQ_API_KEY'),model = 'llama3-70b-8192')
+llm = ChatGroq(groq_api_key = os.getenv('GROQ_API_KEY'),model = 'llama3-70b-8192')
 
-    tools = [get_stock_info, get_historical_price]
-    llm_with_tools = llm.bind_tools(tools)
-
-
-    while True:
-        # Get user input from the console
-        user_input = input("You: ")
-
-        response = call_functions(llm_with_tools, user_input)
-
-        print("Assistant:", response)
+tools = [get_stock_info, get_historical_price]
+llm_with_tools = llm.bind_tools(tools)
 
 
-if __name__ == "__main__":
-    main()
+while True:
+    # Get user input from the console
+    user_input = input("You: ")
+
+    response = call_functions(llm_with_tools, user_input)
+
+    print("Assistant:", response)

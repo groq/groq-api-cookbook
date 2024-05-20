@@ -1,16 +1,14 @@
-# DuckDB Text-to-SQL
+# DuckDB Text-to-SQL with JSON Mode
 
-A command line application that allows users to ask questions about their DuckDB data. The application uses the Groq API to generate SQL queries based on the user's questions and execute them on a DuckDB database.
+A command line application that allows users to ask questions about their DuckDB data. The application leverages Groq API's JSON mode to generate SQL queries based on the user's questions and execute them on a DuckDB database.
 
 ## Features
 
 - **Text-to-SQL**: The application uses natural language processing to convert user questions into SQL queries, making it easy for users to query their data without knowing SQL.
 
-- **Error Handling**: If the AI generates an invalid SQL query, the application prompts the AI to correct its response, ensuring that the output is a valid DuckDB SQL query.
+- **JSON mode**: A feature which enables the LLM to respond strictly in a structured JSON output, provided we supply it with the desired format
 
 - **Data Summarization**: After executing a SQL query, the application uses the AI to summarize the resulting data in relation to the user's original question.
-
-- **Customization**: Users can customize the AI model used, the maximum number of reflections (attempts to correct an invalid response), and the length of the conversational memory.
 
 ## Data
 
@@ -26,18 +24,23 @@ The base prompt for the AI is stored in a text file in the `prompts` folder:
 
 - `base_prompt.txt`
 
+A well-crafted system prompt is essential for building a functional Text-to-SQL application. Ours will serve 3 purposes:
+
+1. Provide the metadata schemas for our database tables
+2. Indicate any relevant context or tips for querying the DuckDB language or our database schema specifically
+3. Define our desired JSON output (note that to use JSON mode, we must include 'JSON' in the prompt)
+
 ## Functions
 
 - `chat_with_groq()`: Sends a prompt to the Groq API and returns the AI's response.
 - `execute_duckdb_query()`: Executes a SQL query on a DuckDB database and returns the result.
-- `get_json_output()`: Extracts and formats the SQL query or error message from the AI's response.
-- `get_reflection()`: Prompts the AI to correct an invalid response.
 - `get_summarization()`: Generates a prompt for the AI to summarize the data resulting from a SQL query.
-- `main()`: The main function of the application, which handles user input and controls the flow of the application.
 
 ## Usage
 
-You can [fork and run this application on Replit](https://replit.com/@GroqCloud/DuckDB-Text-to-SQL) or run it on the command line with `python main.py`
+You will need to store a valid Groq API Key as a secret to proceed with this example. You can generate one for free [here](https://console.groq.com/keys).
+
+You can [fork and run this application on Replit](https://replit.com/@GroqCloud/Building-a-Text-to-SQL-app-with-Groqs-JSON-mode) or run it on the command line with `python main.py`.
 
 ## Customizing with Your Own Data
 

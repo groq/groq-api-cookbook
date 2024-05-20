@@ -5,6 +5,28 @@ from langchain_groq import ChatGroq
 
 
 def main():
+    """
+    Main function to initialize and run the CrewAI Machine Learning Assistant.
+
+    This function sets up a machine learning assistant using the Llama 3 model with the ChatGroq API.
+    It provides a text-based interface for users to define, assess, and solve machine learning problems
+    by interacting with multiple specialized AI agents. The function outputs the results to the console 
+    and writes them to a markdown file.
+
+    Steps:
+    1. Initialize the ChatGroq API with the specified model and API key.
+    2. Display introductory text about the CrewAI Machine Learning Assistant.
+    3. Create and configure four AI agents:
+        - Problem_Definition_Agent: Clarifies the machine learning problem.
+        - Data_Assessment_Agent: Evaluates the quality and suitability of the provided data.
+        - Model_Recommendation_Agent: Suggests suitable machine learning models.
+        - Starter_Code_Generator_Agent: Generates starter Python code for the project.
+    4. Prompt the user to describe their machine learning problem.
+    5. Check if a .csv file is available in the current directory and try to read it as a DataFrame.
+    6. Define tasks for the agents based on user input and data availability.
+    7. Create a Crew instance with the agents and tasks, and run the tasks.
+    8. Print the results and write them to an output markdown file.
+    """
 
     model = 'llama3-8b-8192'
 
@@ -14,7 +36,6 @@ def main():
             model_name=model
         )
 
-    # Streamlit UI
     print('CrewAI Machine Learning Assistant')
     multiline_text = """
     The CrewAI Machine Learning Assistant is designed to guide users through the process of defining, assessing, and solving machine learning problems. It leverages a team of AI agents, each with a specific role, to clarify the problem, evaluate the data, recommend suitable models, and generate starter Python code. Whether you're a seasoned data scientist or a beginner, this application provides valuable insights and a head start in your machine learning projects.
@@ -72,20 +93,6 @@ def main():
         llm=llm,
     )
 
-    # Summarization_Agent = Agent(
-    #     role='Starter_Code_Generator_Agent',
-    #     goal="""Summarize findings from each of the previous steps of the ML discovery process.
-    #         Include all findings from the problem definitions, data assessment and model recommendation 
-    #         and all code provided from the starter code generator.
-    #         """,
-    #     backstory="""You are a seasoned data scientist, able to break down machine learning problems for
-    #         less experienced practitioners, provide valuable insight into the problem and why certain ML models
-    #         are appropriate, and write good, simple code to help get started on solving the problem.
-    #         """,
-    #     verbose=True,
-    #     allow_delegation=False,
-    #     llm=llm,
-    # )
 
     user_question = input("Describe your ML problem: ")
     data_upload = False
@@ -110,7 +117,7 @@ def main():
         task_define_problem = Task(
         description="""Clarify and define the machine learning problem, 
             including identifying the problem type and specific requirements.
-            
+
             Here is the user's problem:
             {ml_problem}
             """.format(ml_problem=user_question),
@@ -122,11 +129,11 @@ def main():
             task_assess_data = Task(
                 description="""Evaluate the user's data for quality and suitability, 
                 suggesting preprocessing or augmentation steps if needed.
-                
+
                 Here is a sample of the user's data:
                 {df}
                 The file name is called {uploaded_file}
-                
+
                 """.format(df=df.head(),uploaded_file=sample_fp),
                 agent=Data_Assessment_Agent,
                 expected_output="An assessment of the data's quality and suitability, with suggestions for preprocessing or augmentation if necessary."
@@ -157,19 +164,11 @@ def main():
         expected_output="Python code snippets for package import, data handling, model definition, and training, tailored to the user's project, plus a brief summary of the problem and model recommendations."
         )
 
-        # task_summarize = Task(
-        #     description="""
-        #     Summarize the results of the problem definition, data assessment, model recommendation and starter code generator.
-        #     Keep the summarization brief and don't forget to share the entirety of the starter code!
-        #     """,
-        #     agent=Summarization_Agent
-        # )
-
 
         crew = Crew(
-            agents=[Problem_Definition_Agent, Data_Assessment_Agent, Model_Recommendation_Agent,  Starter_Code_Generator_Agent], #, Summarization_Agent],
-            tasks=[task_define_problem, task_assess_data, task_recommend_model,  task_generate_code], #, task_summarize],
-            #verbose=2
+            agents=[Problem_Definition_Agent, Data_Assessment_Agent, Model_Recommendation_Agent,  Starter_Code_Generator_Agent], 
+            tasks=[task_define_problem, task_assess_data, task_recommend_model,  task_generate_code], 
+            verbose=False
         )
 
         result = crew.kickoff()
