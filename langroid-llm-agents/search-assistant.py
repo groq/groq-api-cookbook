@@ -11,6 +11,10 @@ says DONE and presents the answer to the user.
 Run like this:
 
 python3 search-assistant.py
+
+To run with a different Groq-hosted LLM, you can pass in the LLM via the MODEL env var:
+
+MODEL=groq/<another_model> python3 search-assistant.py
 """
 
 from dotenv import load_dotenv
@@ -21,6 +25,7 @@ import langroid as lr
 import langroid.language_models as lm
 from langroid.agent.tools.duckduckgo_search_tool import DuckduckgoSearchTool
 
+# can pass in this env var at the command line
 MODEL = "groq/llama3-70b-8192"
 
 def main() -> None:
