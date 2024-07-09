@@ -1,4 +1,18 @@
-# ![groq-logo](images/groq-logo.png) Groq API Cookbook
+<h2 align="center">
+ <br>
+ <img src="images/groq-logo.png" alt="Groq Logo" width="150">
+ <br>
+ <br>
+Groq API Cookbook Groq API Cookbook
+  <br>
+</h2>
+
+<p align="center">
+ <a href="#Have questions?">Questions</a> •
+ <a href="#Find a bug?">Bug Reporting</a> •
+ <a href="#Contributing to the Cookbook">Contributing</a>
+</p>
+<br>
 
 Are you ready to cook? 🚀 This is a collection of example code and guides for Groq API for you to explore. To run these examples, you'll need a Groq API key that you can get for free by creating an account [here](https://console.groq.com/). 
 
