@@ -8,9 +8,10 @@ Groq API Cookbook
 </h2>
 
 <p align="center">
- <a href="#Have questions?">Questions</a> •
- <a href="#Find a bug?">Bug Reporting</a> •
- <a href="#Contributing to the Cookbook">Contributing</a>
+  <a href="#Getting-started">Getting Started</a> •
+ <a href="#Have-questions?">Questions</a> •
+ <a href="#Find-a-bug?">Bug Reporting</a> •
+ <a href="#Contributing-to-the-Cookbook">Contributing</a>
 </p>
 <br>
 
