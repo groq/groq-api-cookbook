@@ -3,7 +3,7 @@
  <img src="images/groq-logo.png" alt="Groq Logo" width="150">
  <br>
  <br>
-Groq API Cookbook Groq API Cookbook
+Groq API Cookbook
   <br>
 </h2>
 
