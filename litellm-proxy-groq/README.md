@@ -104,7 +104,7 @@ print(completion)
 Just add `groq/` to the beginning of the model name.
 
 Example models: 
-LiteLLM Supports 💥 ALL groq models
+LiteLLM Supports 💥 ALL Groq models
 | Model Name         | Usge                                        |
 |--------------------|---------------------------------------------------------|
 | llama3-8b-8192     | `completion(model="groq/llama3-8b-8192", messages)`     | 
