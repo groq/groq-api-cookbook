@@ -1,7 +1,7 @@
 # Use LiteLLM Proxy to Call Groq AI API
 
 Use [LiteLLM Proxy](https://docs.litellm.ai/docs/simple_proxy) for:
-- Calling 100+ LLMs Groq AI, OpenAI, Azure, Vertex, Bedrock/etc. in the OpenAI ChatCompletions & Completions format
+- Calling 100+ LLMs on Groq, OpenAI, Azure, Vertex, Bedrock, and more in the OpenAI ChatCompletions & Completions format
 - Track usage + set budgets with Virtual Keys
 
 Using [Groq AI API with LiteLLM](https://docs.litellm.ai/docs/providers/groq)
