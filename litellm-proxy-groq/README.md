@@ -97,7 +97,7 @@ print(completion)
 ```
 
 
-## Supported Groq AI API Models
+## Supported Groq API Models
 
 **ALL MODELS SUPPORTED**. 
 
