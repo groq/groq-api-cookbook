@@ -1,6 +1,6 @@
 # Website Guru
 
-Website Guru is a Streamlit application that allows you to interact with and ask questions about a given website using advanced language models. The app uses a combination of document loading, text splitting, vector storage, and retrieval chains to generate accurate responses based on the content of the specified website.
+Website Guru is a Streamlit application that allows you to interact with and ask questions about a given website using Large Language Models (LLMs). The app uses a combination of document loading, text splitting, vector storage, and retrieval chains to generate accurate responses based on the content of the specified website.
 
 ## Features
 
@@ -37,7 +37,7 @@ Website Guru is a Streamlit application that allows you to interact with and ask
 
 2. Open your web browser and go to http://localhost:8501.
 
-3. Enter the website address you want to analyze and choose a language model.
+3. Enter the website address you want to analyze and select LLM of your choice.
 
 4. Type your question in the provided input box and click the "Submit" button.
 
