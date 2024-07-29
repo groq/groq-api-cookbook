@@ -24,6 +24,7 @@ st.set_page_config(layout="wide", page_title="Website Guru")
 # Setting up a fancy UI
 st.subheader('', divider='rainbow')
 st.markdown("<h1 style='text-align: center;'>You can now talk to your website \U0001F60E</h1>", unsafe_allow_html=True)
+st.markdown("<p style=' text-align: right;'>- POWERED BY GROQ</p>", unsafe_allow_html=True)
 st.subheader('', divider='rainbow')
 st.subheader('Find answers faster :sparkles:')
 
