@@ -19,7 +19,7 @@ Groq API Cookbook
 Are you ready to cook? 🚀 This is a collection of example code and guides for Groq API for you to explore. To run these examples, you'll need a Groq API key that you can get for free by creating an account [here](https://console.groq.com/). 
 
 ### Have questions?
-Join our [developer community on Discord](https://discord.com/invite/n8KtCjfAug) where we discuss useful tools, share guidance, and collaborate with industry professionals!
+Join our [developer community on Discord](https://discord.com/invite/groq) where we discuss useful tools, share guidance, and collaborate with industry professionals!
 
 ### Find a bug?
 Open an issue on GitHub [here](https://github.com/groq/groq-api-cookbook/issues). 
