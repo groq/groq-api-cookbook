@@ -7,7 +7,7 @@ This guide explains how to use the CodeGPT extension in Visual Studio Code with 
 
 ## How to Use CodeGPT in Visual Studio Code
 ### 1. Create a GroqCloud Account
-- Sign up for a free [GroqCloud account](https://console.groq.com/playground) and generate a Groq API key at [https://console.groq.com/keys](https://console.groq.com/keys)
+- Sign up for a free [GroqCloud account](https://console.groq.com/playground) and generate a Groq API key on the [console](https://console.groq.com/keys)
 
 ### 2. Install CodeGPT
 - Open Visual Studio Code and navigate to the "Extensions" marketplace and install the **CodeGPT** extension
@@ -21,8 +21,7 @@ This guide explains how to use the CodeGPT extension in Visual Studio Code with 
 
 ### 5. Use CodeGPT Features in VS Code
 #### Explain a File
-- Type `/Explain` in the CodeGPT input field
-- Use `@` to select a file from your project directory.
+- Type `/Explain` in the CodeGPT input field and use `@` to select a file from your project directory.
 - Press Enter, and the selected Groq model will generate a comprehensive explanation of the file
 
 #### Document a File
