@@ -1,13 +1,11 @@
 # Groq CodeGPT Setup Guide
-
 This guide explains how to use the CodeGPT extension in Visual Studio Code with Groq as the AI model provider. By the end of this guide, you'll have an AI-driven coding assistant set up to enhance your productivity, leveraging Groq's inference speed technology for faster performance.
 
 ## What is CodeGPT?
-
 **CodeGPT** is a powerful extension for Visual Studio Code that acts as your pair-programming partner, helping you code more efficiently. It offers AI chat assistance, auto-completion, code explanation, error-checking, and much more. By integrating Groq's AI models, CodeGPT enhances your coding experience. With **CodeGPT Plus**, you can access expert AI agents that assist in writing better code, all within your code editor.
 
-## How to Use CodeGPT in Visual Studio Code
 
+## How to Use CodeGPT in Visual Studio Code
 ### 1. Create a GroqCloud Account
 - Sign up for a free [GroqCloud account](https://console.groq.com/playground) and generate a Groq API key at [https://console.groq.com/keys](https://console.groq.com/keys)
 
