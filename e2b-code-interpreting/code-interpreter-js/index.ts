@@ -1,11 +1,12 @@
 import { CodeInterpreter, Result, ProcessMessage } from '@e2b/code-interpreter'
 import { Groq } from 'groq-sdk'
-import CompletionCreateParams from 'groq-sdk'
 import fs from 'node:fs'
 import dotenv from 'dotenv'
+
 dotenv.config()
 
 // Define API keys
+
 // TODO: Get your Groq AI API key from https://console.groq.com/
 const GROQ_API_KEY = process.env.GROQ_API_KEY
 
@@ -97,29 +98,6 @@ Generally, you follow these rules:
 const TASK =
   'Make a chart showing linear regression of the relationship between GDP per capita and life expectancy from the data. Filter out any missing values or values in wrong format.'
 
-// Define e2b code interpreter as a tool for the model
-// TBD DELETE:
-
-// const tools: Array<CompletionCreateParams.Tool> = [
-//   {
-//     type: 'function',
-//     function: {
-//       name: 'execute_python',
-//       description:
-//         'Execute python code in a Jupyter notebook cell and returns any result, stdout, stderr, display_data, and error.',
-//       parameters: {
-//         type: 'object',
-//         properties: {
-//           code: {
-//             type: 'string',
-//             description: 'The python code to execute in a single cell.',
-//           },
-//         },
-//         required: ['code'],
-//       },
-//     },
-//   },
-// ]
 
 // Create Groq client
 const client = new Groq({ apiKey: GROQ_API_KEY })
@@ -203,7 +181,7 @@ async function uploadDataset(codeInterpreter: CodeInterpreter): Promise<string> 
 // Putting it together
 
 async function run() {
-  const codeInterpreter = await CodeInterpreter.create()
+  const codeInterpreter = await CodeInterpreter.create({apiKey: E2B_API_KEY})
 
   try {
       const remotePath = await uploadDataset(codeInterpreter)
