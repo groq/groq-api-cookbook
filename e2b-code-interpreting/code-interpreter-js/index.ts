@@ -93,12 +93,6 @@ Generally, you follow these rules:
 - you can run any Python code you want, everything is running in a secure sandbox environment
 `
 
-
-// Define the task, feel free to change it
-const TASK =
-  'Make a chart showing linear regression of the relationship between GDP per capita and life expectancy from the data. Filter out any missing values or values in wrong format.'
-
-
 // Create Groq client
 const client = new Groq({ apiKey: GROQ_API_KEY })
 
