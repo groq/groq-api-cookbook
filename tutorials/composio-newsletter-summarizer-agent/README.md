@@ -6,4 +6,4 @@ This guide demonstrates how to use Groq's LLMs with Composio. Composio provides 
 
 If you encounter any problems, please let us know at our [Discord](https://discord.com/invite/cNruWaAhQk).
 
-Check out [Composio's documentation](https://docs.composio.dev/introduction/intro/overview) to learn more about how to use and integrate various tools for different usecases.
+Check out [Composio](https://app.composio.dev) to learn more about how to use and integrate various tools for different usecases.
