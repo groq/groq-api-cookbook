@@ -45,7 +45,7 @@ resp = jigsaw.prompt_engine.run(
     {
         "id": result.prompt_engine_id, #The ID you got after creating the engine
         "input_values": {
-            "about": "Singaporean chicken rice", #They value for your dynamic field
+            "dish": "Singaporean chicken rice", #They value for your dynamic field
         },
     }
 )
@@ -59,15 +59,19 @@ from jigsawstack import JigsawStack
 jigsaw = JigsawStack(api_key="your-api-key")
 
 params = {
-    "prompt": "Tell me a story about {about}",
+    "prompt":"How to cook {dish}",
     "inputs": [
         {
-            "key": "about",
-            "optional": false,
-            "initial_value": "Leaning Tower of Pisa",
+            "key": "dish"
         },
     ],
-    "return_prompt": "Return the result in a markdown format",
+    "input_values": {
+        "dish": "Nigerian Jollof Rice"
+    },
+    "return_prompt": [{
+         "step": "Name of this step",
+        "details": "Details of this step",
+    }],
 }
 
 result = jigsaw.prompt_engine.run_prompt_direct(params)
@@ -85,10 +89,11 @@ params = {
     "inputs": [
         {
             "key": "about",
-            "optional": false,
-            "initial_value": "Leaning Tower of Pisa",
         },
     ],
+    "input_values": {
+        "about": "The Leaning Tower of Pisa"
+    },
     "return_prompt": "Return the result in a markdown format",
     "prompt_guard": ["sexual_content", "defamation"] #Add this to use llama-guard
 }
