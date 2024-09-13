@@ -9,10 +9,7 @@ params = {
     "prompt": "How to cook {dish}",  # The prompt for your use case
     "inputs": [{"key": "dish"}],  # dynamic vars that are in the brackets {}
     "return_prompt": [
-        {
-            "step": "Step counter",
-            "details": "Details of this step",
-        }
+        {"step": "name of the step", "details": "details of this step"}
     ],  # The structure of the JSON, in this case, an array of objects
     "input_values": {"dish": "pizza"},
     "prompt_guard": [
