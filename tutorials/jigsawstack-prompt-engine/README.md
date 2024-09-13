@@ -6,8 +6,8 @@ The JigsawStack Prompt Engine allows you to run the best LLM on every prompt at 
 
 
 ## Prerequisite 
-- Create a JigsawStack account (if you don't have any)
-- Retrieve your api key 
+- Create a JigsawStack [account](https://jigsawstack.com) (Get started for free)
+- Retrieve your api [key](https://jigsawstack.com/dashboard)
 
 
 ### Installation
