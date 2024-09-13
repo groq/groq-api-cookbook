@@ -103,4 +103,11 @@ print(result)
 ```
 
 
-For more information on the Prompt Engine 
+
+## Recommendation
+
+- For prompts that are used repeatedly, it is recommended to first create the prompt, then run it using its prompt ID to enable optimization.
+
+- Run Prompt Direct is ideal for one-time use.
+
+For more information on the Prompt Engine engine see [documentation](https://docs.jigsawstack.com/examples/ai/prompt-engine)
