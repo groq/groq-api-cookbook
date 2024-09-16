@@ -1,0 +1,6 @@
+pandas==1.5.1
+statsapi==1.7.2
+numpy==1.23.4
+crewai_tools==0.4.8
+crewai==0.41.1
+langchain_groq==0.1.6
