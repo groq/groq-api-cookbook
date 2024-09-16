@@ -2,22 +2,26 @@
 
 ## Overview
 
-The [JigsawStack](https://jigsawstack.com) Prompt Engine allows you to run the best LLM on every prompt at the fastest speed powered by Groq!
+[JigsawStack](https://jigsawstack.com) is a powerful AI SDK designed to integrate into any backend, automating tasks such as web scraping, Optical Character Recognition (OCR), translation, and more, using custom fine-tuned models. By plugging JigsawStack into your existing application infrastructure, you can offload the heavy lifting and focus on building.
+
+The JigsawStack Prompt Engine is a feature that allows you to not only leverage Large Language Models (LLMs) but automatically choose the best LLM for every one of your prompts, delivering lightning-fast results powered by [Groq](https://groq.com/).
 
 
 ## Features
 
-🌐**Prompt caching**: Stores prompts and responses for quick reuse, significantly reducing latency for repeated queries.
+The JigsawStack Prompt Engine comes with a range of features out-of-the-box that make it easy to work with LLMS:
 
-💬**Automatic prompt optimization**: Automatically refines prompts to enhance response accuracy and efficiency from the language model.
+🌐 Prompt caching for repeated prompt runs
 
-📄**Response schema validation**: Ensures that responses adhere to a predefined format or structure, providing consistency in output.
+💬 Automatic prompt optimization for improved performance
 
-🔁**Reusable prompts**: Allows prompts to be reused across different sessions and workflows, saving time in repetitive tasks.
+📄 Response schema validation for accuracy and consistency
 
-🧠**Multi-agent LLM from 50+ models**: Automatically selects the best model suitable for the task from the poll of models.
+🔁 Reusable prompts to streamline your workflow
 
-🚫 **No virtual rate limits, tokens, and GPU management**
+🧠 Multi-agent LLM from 50+ models for flexibility depending on your apps
+
+🚫 No virtual rate limits, tokens, and GPU management
 
 ## Usage
 
