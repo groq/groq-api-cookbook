@@ -10,7 +10,7 @@ With Portkey, you can:
 - [x] Enable semantic caching to reduce latency & costs
 - [x] Implement reliability features like conditional routing, retries & fallbacks
 - [x] Add custom tags to requests for better tracking and analysis
-- [x] Guradrials and more
+- [x] Guardrails and more
 
 ## Quickstart
 
@@ -82,7 +82,6 @@ One of Portkey's strengths is the ability to easily switch between different LLM
 portkey = Portkey(
     api_key="YOUR_PORTKEY_API_KEY",
     virtual_key="YOUR_OPENAI_VIRTUAL_KEY",
-    model="gpt-4o"
 )
 ```
 
@@ -109,7 +108,7 @@ print(response.choices[0].message)
 ```
 
 
-## Advance Routing
+## Advanced Routing
 
 Portkey config is a JSON object that defines how Portkey should handle your API requests. Configs allow you to customize various aspects of your API calls, including routing, caching, and reliability features. You can apply configs globally when initializing the Portkey client.
 
@@ -159,7 +158,7 @@ Enable semantic caching to reduce latency and costs:
 ```python
 test_config = {
     "cache": {
-        "mode": "semantic", # Choose beteween simple and semantic
+        "mode": "semantic", # Choose between simple and semantic
     }
 }
 ```
@@ -175,8 +174,8 @@ retry_fallback_config = {
     },
     "fallback": {
         "targets": [
-            {"virtual_key": "openai-virtual-key", "model": "gpt-3.5-turbo"},
-            {"virtual_key": "groq-virtual-key", "model": "llama-3.1-8b-instant"}
+            {"virtual_key": "openai-virtual-key"},
+            {"virtual_key": "groq-virtual-key"}
         ]
     }
 }
@@ -206,12 +205,12 @@ test_config = {
     {
       "name": "free-model",
       "virtual_key": "groq-virtual-key",
-      "model": "mixtral-8x7b-32768",
+      "override_params": {"model": "mixtral-8x7b-32768"},
     },
      {
       "name": "paid-model",
       "virtual_key": "groq-virtual-key",
-      "model": "llama-3.1-8b-instant",
+      "override_params": {"model": "llama-3.1-8b-instant"},
     },
   ]
 }
@@ -229,11 +228,11 @@ test_config = {
     },
     "targets": [{
         "virtual_key": "groq-virtual-key",
-        "model": "mixtral-8x7b-32768",
+        "override_params": {"model": "mixtral-8x7b-32768"},
         "weight": 0.7
     }, {
         "virtual_key": "groq-virtual-key",
-        "model": "llama2-70b-4096",
+        "override_params": {"model": "llama-3.1-8b-instant"},
         "weight": 0.3
     }]
 }
