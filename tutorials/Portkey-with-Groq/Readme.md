@@ -87,6 +87,7 @@ portkey = Portkey(
 
 
 ### Add Custom-data to your requests
+You can send custom metadata along with your requests in Portkey, which can later be used for auditing or filtering logs. You can pass **any number** of keys, all values should be of type `string` with max-length as **128** characters.
 
 ```python
 portkey = Portkey(
