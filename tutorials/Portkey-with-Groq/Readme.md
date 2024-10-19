@@ -76,7 +76,7 @@ Portkey automatically logs all requests, making debugging and monitoring simple.
 
 ### Using 250+ Models
 
-One of Portkey's strengths is the ability to easily switch between different LLM providers. To use OpenAI instead of Groq, simply change the virtual key:
+One of Portkey's strengths is the ability to easily switch between different LLM providers. To do so, simply change the virtual key.
 
 ```python
 portkey = Portkey(
