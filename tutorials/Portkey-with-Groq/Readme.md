@@ -29,7 +29,7 @@ pip install portkey-ai
 To use Groq with Portkey, you'll need two keys:
 
 1. **Portkey API Key**: Sign up at [app.portkey.ai](https://app.portkey.ai/signup) and copy your [API key](https://app.portkey.ai/api-keys).
-2. **Groq API Key**: Obtain from [Groq's console](https://console.groq.com/keys).
+2. **Groq API Key**: Create a free account on [GroqCloud](https://console.groq.com) and generate your [Groq API Key](https://console.groq.com/keys).
 
 Create a `Virtual Key` in Portkey to securely store your Groq API key:
 
