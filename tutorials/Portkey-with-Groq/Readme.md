@@ -81,7 +81,7 @@ One of Portkey's strengths is the ability to easily switch between different LLM
 ```python
 portkey = Portkey(
     api_key="YOUR_PORTKEY_API_KEY",
-    virtual_key="YOUR_OPENAI_VIRTUAL_KEY",
+    virtual_key="VIRTUAL_KEY",
 )
 ```
 
