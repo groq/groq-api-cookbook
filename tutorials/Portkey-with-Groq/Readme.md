@@ -50,7 +50,7 @@ portkey = Portkey(
 > You can also make API calls without using virtual key, learn more [here](https://github.com/portkey-ai/gateway)
 ### 4. Make API Calls
 
-Now you can make calls to Groq's models through Portkey:
+Now you can make calls to models powered by Groq for fast inference speed and low latency through Portkey:
 
 ```python
 completion = portkey.chat.completions.create(
