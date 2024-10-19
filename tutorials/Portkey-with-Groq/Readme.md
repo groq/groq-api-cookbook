@@ -68,7 +68,7 @@ print(completion)
 Portkey automatically logs all requests, making debugging and monitoring simple. View detailed logs and traces in the Portkey dashboard.
 
 
-![observaibility dashbaord](https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/refs/heads/main/Portkey-Dashboard.png)
+![observability dashboard](https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/refs/heads/main/Portkey-Dashboard.png)
 
 
 ![image](https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/refs/heads/main/Portkey-Traces.png)
