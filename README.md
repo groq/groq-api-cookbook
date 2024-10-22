@@ -30,3 +30,43 @@ The Groq API Cookbook is community-driven and we are always looking for contribu
 If you're interested in contributing to our cookbook, please first check out our [contribution guidelines](https://github.com/groq/groq-api-cookbook/blob/main/CONTRIBUTING.md). We welcome high-quality guides and examples that will help our community and can't wait to see what you cook up! 🧑‍🍳
 
 If there are guides or examples that you'd like to see in the future, feel free to make a suggestion [here](https://github.com/groq/groq-api-cookbook/issues).
+
+## Table of tutorials
+
+### Quickstart
+- [Using Llama Guard](/tutorials/llama-guard-safe-chatbot): Use llamaguard to help prevent abuse and engagement with inappropriate content.
+
+### Function calling
+- [eCommerce Function Calling](/tutorials/function-calling-101-ecommerce): Use function calling with AI to create orders and get prices on products.
+- [SQL Function Calling](/tutorials/function-calling-sql): Use function calling with AI to run SQL queries.
+- [Stock Market Function Calling](/tutorials/llama3-stock-market-function-calling): Use function calling with AI to parse stock market data.
+- [Parallel Tool Use](/tutorials/parallel-tool-use): Use function calling with AI to use multiple tools at the same time.
+
+### Rag
+- [Benchmarking Rag Langchain](tutorials/benchmarking-rag-langchain): Benchmark a RAG pipeline with Llama3 and LangChain.
+- [Presidential Speeches Rag](/tutorials/presidential-speeches-rag): Use RAG to find relevant presidential speeches from input text.
+- [Whisper and Rag](/tutorials/whisper-podcast-rag): Use Whisper and RAG to semantically search through podcast audio.
+
+### JSON Mode
+- [JSON Mode with Health Data](/tutorials/json-mode-social-determinants-of-health): Use JSON mode to generate structured health analytics from raw data.
+- [Structured Output Generator](/tutorials/structured-output-instructor): Use JSON mode to create structured output with tools and objects.
+
+### Multimodal
+- [Multimodal Image Processing](/tutorials/multimodal-image-processing): Process and analyze images using a leading vision model.
+
+### Integrations
+- [Gradio with Groq](/tutorials/groq-gradio): Build a Gradio app powered by Groq.
+- [Gradio with Groq](/tutorials/groq_streamlit_demo): Build a chat app in Streamlit powered by Groq. 
+- [Portkey with Groq](/tutorials/Portkey-with-Groq): Integrate Portkey for AI observability into Groq usage.
+- [Composio with Groq](/tutorials/composio-newsletter-summarizer-agent): Integrate Composio with Groq for pre-defined actions for applications like Gmail, Slack, and GitHub.
+- [CrewAI with Groq](/tutorials/crewai-mixture-of-agents): Build a mixture of agents application with CrewAI.
+- [E2B with Groq](/tutorials/e2b-code-interpreting): Build code execution with the Code Interpreter SDK by E2B.
+- [JigsawStack with Groq](/tutorials/jigsawstack-prompt-engine): Automate tasks like web scraping, OCR, and translation through a JigsawStack integration.
+- [Langroid with Groq](/tutorials/langroid-llm-agents): Create a multi-agent system using Langroid and Groq.
+- [LiteLLM Proxy with Groq](/tutorials/litellm-proxy-groq): Call Groq through the LiteLLM proxy.
+- [Toolhouse with Groq](/tutorials/toolhouse-for-tool-use-with-groq-api): Use Toolhouse to create simple tool integrations with Groq.
+
+### Agentic
+- [Mixture of Agents](/tutorials/mixture-of-agents): Create a mixture-of-agents system powered by Groq.
+- [Game Recap with MoA](/tutorials/phidata-mixture-of-agents): Use a mixture-of-agents approach to generate comprehensive MLB game recaps.
+
