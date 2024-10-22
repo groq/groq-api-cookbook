@@ -15,13 +15,13 @@ Groq API Cookbook
 </p>
 <br>
 
-### Getting started
+## Getting started
 Are you ready to cook? 🚀 This is a collection of example code and guides for Groq API for you to explore. To run these examples, you'll need a Groq API key that you can get for free by creating an account [here](https://console.groq.com/). 
 
-### Have questions?
+## Have questions?
 Join our [developer community on Discord](https://discord.com/invite/groq) where we discuss useful tools, share guidance, and collaborate with industry professionals!
 
-### Find a bug?
+## Find a bug?
 Open an issue on GitHub [here](https://github.com/groq/groq-api-cookbook/issues). 
 
 ## Contributing to the Cookbook
@@ -33,22 +33,22 @@ If there are guides or examples that you'd like to see in the future, feel free 
 
 ## Table of tutorials
 
-### Quickstart
+### Guardrails
 - [Content Filtering with Llama Guard](/tutorials/llama-guard-safe-chatbot): Learn how to use Llama Guard to help prevent abuse and engagement with inappropriate content.
 
 ### Tool Use (Function Calling)
 - [eCommerce Function Calling](/tutorials/function-calling-101-ecommerce): Learn how to use function calling with LLMs powered by Groq to create orders and get prices on products.
-- [SQL Function Calling](/tutorials/function-calling-sql): Use function calling with AI to run SQL queries.
-- [Stock Market Function Calling](/tutorials/llama3-stock-market-function-calling): Use function calling with AI to parse stock market data.
-- [Parallel Tool Use](/tutorials/parallel-tool-use): Use function calling with AI to use multiple tools at the same time.
+- [SQL Function Calling](/tutorials/function-calling-sql): Learn how to use function calling with AI to run SQL queries.
+- [Stock Market Function Calling](/tutorials/llama3-stock-market-function-calling): Learn how to use function calling with AI to parse stock market data.
+- [Parallel Tool Use](/tutorials/parallel-tool-use): Learn how to use function calling with AI to use multiple tools at the same time.
 
 ### Retrieval-Augmented Generation (RAG)
 - [Benchmarking RAG with Langchain](tutorials/benchmarking-rag-langchain): Learn how to benchmark a RAG pipeline with Llama3 and LangChain.
-- [Presidential Speeches Rag](/tutorials/presidential-speeches-rag): Use RAG to find relevant presidential speeches from input text.
-- [Whisper and Rag](/tutorials/whisper-podcast-rag): Use Whisper and RAG to semantically search through podcast audio.
+- [Presidential Speeches RAG](/tutorials/presidential-speeches-rag): Learn how to use RAG to find relevant presidential speeches from input text.
+- [Whisper and RAG](/tutorials/whisper-podcast-rag): Learn how to use Whisper and RAG to semantically search through podcast audio.
 
 ### JSON Mode
-- [JSON Mode with Health Data](/tutorials/json-mode-social-determinants-of-health): Use JSON mode to generate structured health analytics from raw data.
+- [JSON Mode with Health Data](/tutorials/json-mode-social-determinants-of-health): Learn how to use JSON mode to generate structured health analytics from raw data.
 - [Structured Output Generator](/tutorials/structured-output-instructor): Learn how to use the Instructor library to create structured output with tools and objects. Special thanks to our GroqChamp, @S4mpl3r, for contributing!
 
 ### Multimodal
