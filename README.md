@@ -56,7 +56,7 @@ If there are guides or examples that you'd like to see in the future, feel free 
 
 ### Integrations
 - [Gradio with Groq](/tutorials/groq-gradio): Build a Gradio app powered by Groq.
-- [Gradio with Groq](/tutorials/groq_streamlit_demo): Build a chat app in Streamlit powered by Groq. 
+- [Streamlit with Groq](/tutorials/groq_streamlit_demo): Build a chat app in Streamlit powered by Groq. 
 - [Portkey with Groq](/tutorials/Portkey-with-Groq): Integrate Portkey for AI observability into Groq usage.
 - [Composio with Groq](/tutorials/composio-newsletter-summarizer-agent): Integrate Composio with Groq for pre-defined actions for applications like Gmail, Slack, and GitHub.
 - [CrewAI with Groq](/tutorials/crewai-mixture-of-agents): Build a mixture of agents application with CrewAI.
