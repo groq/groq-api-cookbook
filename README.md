@@ -65,6 +65,7 @@ If there are guides or examples that you'd like to see in the future, feel free 
 - [Langroid with Groq](/tutorials/langroid-llm-agents): Create a multi-agent system using Langroid and Groq.
 - [LiteLLM Proxy with Groq](/tutorials/litellm-proxy-groq): Call Groq through the LiteLLM proxy.
 - [Toolhouse with Groq](/tutorials/toolhouse-for-tool-use-with-groq-api): Use Toolhouse to create simple tool integrations with Groq.
+- [OpenTelemetry with Groq](/tutorials/opentelemetry-observability-groq): Integrate OpenTelemetry tracing and metrics for insights into Groq usage.
 
 ### Agentic
 - [Mixture of Agents](/tutorials/mixture-of-agents): Create a mixture-of-agents system powered by Groq.
