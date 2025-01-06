@@ -8,9 +8,9 @@
 
 ## Overview
 
-This project demonstrates the capabilities of the aiXplain platform in creating a modular multi-agent. The Travel Agent combines advanced AI models, real-time data integration, and robust orchestration features to provide personalized and adaptive travel planning experiences.
+This tutorial demonstrates the capabilities of the aiXplain platform in creating a modular multi-agent powered by Groq for fast inference speed. The Travel Agent combines advanced AI models, real-time data integration, and robust orchestration features to provide personalized and adaptive travel planning experiences.
 
-Built on aiXplain, this platform showcases how developers can easily design, build, and deploy intelligent agents without requiring extensive AI/ML expertise.
+Built on aiXplain, this tutorial showcases how developers can easily design, build, and deploy intelligent agents without requiring extensive AI/ML expertise.
 
 ## Why aiXplain?
 
@@ -53,7 +53,8 @@ os.environ["AIXPLAIN_API_KEY"] = "<YOUR_ACCESS_KEY>"
 ```
 
 ### Build Your Agent
-Utilize `AgentFactory` to design agents with specific functionalities:
+
+Leverage the power of **Groq-enhanced LLMs** by utilizing `AgentFactory` to design highly efficient agents. Explore a wide range of Groq-powered models on aiXplain by clicking [here](https://platform.aixplain.com/discover?page=1&owner=6839).
 
 ```python
 from aixplain.factories import AgentFactory
