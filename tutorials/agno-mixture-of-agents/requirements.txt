@@ -1,4 +1,4 @@
-phidata
+agno
 groq
 pandas
 MLB-StatsAPI
