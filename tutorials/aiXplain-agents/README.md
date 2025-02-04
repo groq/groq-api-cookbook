@@ -53,8 +53,9 @@ os.environ["AIXPLAIN_API_KEY"] = "<YOUR_ACCESS_KEY>"
 ```
 
 ### Build Your Agent
+Leverage the power of **Groq-enhanced LLMs** by utilizing `AgentFactory` to design highly efficient agents.
 
-Leverage the power of **Groq-enhanced LLMs** by utilizing `AgentFactory` to design highly efficient agents. Explore a wide range of Groq-powered models on aiXplain by clicking [here](https://platform.aixplain.com/discover?page=1&owner=6839).
+When creating an agent, you can optionally specify an `llm_id` to integrate a specific Large Language Model (LLM) for enhanced performance. To find an llm_id, browse available models on the [**aiXplain Marketplace**](https://platform.aixplain.com/discover?page=1&owner=6839), and copy the ID from the model details.
 
 ```python
 from aixplain.factories import AgentFactory
@@ -95,7 +96,8 @@ team_agent.deploy()
 
 ## See it in action
 
-<div style="position: relative; padding-bottom: 58.15831987075929%; height: 0;"><iframe src="https://www.loom.com/embed/127a7f6691514035bcf2877ccfcda1eb?sid=8c740ef3-59c4-49a3-8d78-0085059aba41" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<iframe width="560" height="315" src="https://www.loom.com/embed/127a7f6691514035bcf2877ccfcda1eb?sid=8c740ef3-59c4-49a3-8d78-0085059aba41" frameborder="0" allowfullscreen></iframe>
+
 
 ## Learn More
 Explore aiXplain's capabilities: [aiXplain Platform](https://aixplain.com/)<br>
