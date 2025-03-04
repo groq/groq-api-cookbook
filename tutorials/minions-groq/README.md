@@ -7,8 +7,8 @@ This cookbook demonstrates how to use the [Minions framework](https://github.com
 Minions is a framework developed by Stanford's Hazy Research lab that enables efficient collaboration between:
 - Small, local models (running on your device)
 - Large, powerful models (running in the cloud)
-
-By combining Minions with Groq's fast inference, you get the best of both worlds: reduced cloud costs, minimal latency, and high-quality results similar to large models on consumer devices.
+git 
+By combining Minions with Groq's fast inference, you get the best of both worlds: reduced costs, minimal latency, and high-quality results similar to large models.
 
 The framework offers two main protocols:
 
@@ -21,6 +21,8 @@ The framework offers two main protocols:
    - 5.7x reduction in remote costs
    - Maintains 97.9% of cloud model performance
    - Parallel processing further accelerates complex tasks on consumer hardware
+
+Essentially, Minion is significantly more cost-effective than MinionS, but also has lower performance. One should think about the complexity of the task and decide between Minion and MinionS based on the trade-off between cost and performance.
 
 ## Why Groq with Minions?
 
@@ -158,6 +160,7 @@ print(output["final_answer"])
 ```
 
 ## Additional Resources
+Check out these additional resources to learn more about Minions and the Groq API: 
 
 - [Minions GitHub Repository](https://github.com/HazyResearch/minions)
 - [Groq API Documentation](https://console.groq.com/docs)
