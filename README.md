@@ -68,5 +68,5 @@ If there are guides or examples that you'd like to see in the future, feel free 
 
 ### Agentic
 - [Mixture of Agents](/tutorials/mixture-of-agents): Create a mixture-of-agents system powered by Groq.
-- [Game Recap with MoA](/tutorials/phidata-mixture-of-agents): Use a mixture-of-agents approach to generate comprehensive MLB game recaps.
+- [Game Recap with MoA](/tutorials/agno-mixture-of-agents): Use a mixture-of-agents approach to generate comprehensive MLB game recaps.
 
