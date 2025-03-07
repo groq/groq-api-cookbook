@@ -8,8 +8,6 @@ Minions is a framework developed by Stanford's [Hazy Research lab](https://hazyr
 
 The framework offers two main protocols:
 
-#NOTEEEE: PARAPHRASE THE THREE BULLET POINTS, don't mention the 30.4x, don't bullet it, don't have to sell the framework to people. 
-
 The Minion Protocol is a single local model chatting with a cloud model to reach a solution, while MinionS is a cloud model decomposing the task into subtasks for parallel processing. While Minion offers slightly lower performance, it is more cost-effective than MinionS. 
 One should consider the complexity of the task when deciding between Minion and MinionS based on the trade-off between cost and performance.
 
