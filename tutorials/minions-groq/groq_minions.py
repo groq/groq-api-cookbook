@@ -9,20 +9,23 @@ class StructuredLocalOutput(BaseModel):
     citation: str | None
     answer: str | None
 
+#Set up your local model, in this case we're using Llama3.2 3b via Ollama
 local_client = OllamaClient(
     model_name="llama3.2",
     temperature=0.0,
     structured_output_schema=StructuredLocalOutput
 )
 
+#Set up your remote model, in this case we're using Llama3.3 70b via Groq
 remote_client = GroqClient(
     model_name="llama-3.3-70b-versatile",
     api_key=os.getenv("GROQ_API_KEY")
 )
 
-# Instantiate the Minion object with both clients
+# Instantiate the Minion object with the local and remote models
 minions = Minions(local_client, remote_client)
 
+#Context taken from Wikipedia about the Great Depression
 context = """
 The Great Depression was a severe global economic downturn from 1929 to 1939. The period was characterized by high rates of unemployment and poverty; drastic reductions in liquidity, industrial production, and trade; and widespread bank and business failures around the world. The economic contagion began in 1929 in the United States, the largest economy in the world, with the devastating Wall Street stock market crash of October 1929 often considered the beginning of the Depression. Among the countries with the most unemployed were the U.S., the United Kingdom, and Germany.
 
@@ -46,14 +49,15 @@ Economic Indicators Change (1929-1932):
 | Germany        | -41%                | -29%            | -61%         | +232%        |
 """
 
-task = "How did Britain's and France's economic recovery differ in the Great Depression?"
+task = "How did the combination of currency devaluation decisions and trade policies affect the economic recovery rates of Britain versus France during the Great Depression, and what does this reveal about the effectiveness of different policy responses to the crisis?"
 
 # Execute the minions protocol for up to two communication rounds
 output = minions(
     task=task,
     doc_metadata="Historical Economic Analysis",
     context=[context],
-    max_rounds=4
+    max_rounds=2
 )
 
-print(output)
+#Print the final answer
+print(output["final_answer"])

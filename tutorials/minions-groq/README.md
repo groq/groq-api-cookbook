@@ -2,25 +2,16 @@
 
 ## 1. Introduction to Minions
 
-Minions is a framework developed by Stanford's Hazy Research lab that enables efficient collaboration between small, local models running on your device and large, powerful models running in the cloud. By combining Minions with Groq's fast inference and cost-effectiveness, you get reduced costs, minimal latency, and high-quality results similar to using large models exclusively. We will be exploring Minions in general, and then investigating how it is specifically well-suited for multi-hop question-answering, a challenging type of question where frontier models still struggle.
+Minions is a framework developed by Stanford's [Hazy Research lab](https://hazyresearch.stanford.edu/blog/2025-02-24-minions) that enables efficient collaboration between small, local models running on your device and large, powerful models running in the cloud. By combining Minions with Groq's fast inference and cost-effectiveness, you get reduced costs, minimal latency, and high-quality results similar to using large models exclusively. We will be exploring Minions in general, and then investigating how it is specifically well-suited for multi-hop question-answering, a challenging type of question where frontier models still struggle.
 
 ## 2. Minion and MinionS Protocols
 
 The framework offers two main protocols:
 
-### Minion Protocol
-- A single local model chats with a cloud model to reach a solution
-- 30.4x reduction in remote costs
-- Maintains 87% of cloud model performance
-- Significantly reduces end-to-end latency when using Groq's fast inference
+#NOTEEEE: PARAPHRASE THE THREE BULLET POINTS, don't mention the 30.4x, don't bullet it, don't have to sell the framework to people. 
 
-### MinionS Protocol
-- Cloud model decomposes the task into subtasks for parallel processing
-- 5.7x reduction in remote costs
-- Maintains 97.9% of cloud model performance
-- Parallel processing further accelerates complex tasks on consumer hardware
-
-Essentially, Minion is significantly more cost-effective than MinionS, but also has lower performance. One should consider the complexity of the task when deciding between Minion and MinionS based on the trade-off between cost and performance.
+The Minion Protocol is a single local model chatting with a cloud model to reach a solution, while MinionS is a cloud model decomposing the task into subtasks for parallel processing. While Minion offers slightly lower performance, it is more cost-effective than MinionS. 
+One should consider the complexity of the task when deciding between Minion and MinionS based on the trade-off between cost and performance.
 
 ## 3. What is Multi-Hop Reasoning?
 
@@ -125,9 +116,12 @@ ollama pull llama3.2
 ```
 
 5. Get your Groq API key from [Groq Cloud](https://console.groq.com)
+```bash
+export GROQ_API_KEY=YOUR_GROQ_API_KEY
+```
 
 ## Example Code
-Go ahead and ru the example code: 
+Go ahead and run the example code: 
 ```bash
 python groq_minions.py
 ```
