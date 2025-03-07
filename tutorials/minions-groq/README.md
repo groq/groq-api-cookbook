@@ -1,35 +1,103 @@
-# Minions with Groq API Cookbook
+# Minions with Groq API Cookbook for Multi-Hop Reasoning
 
-This cookbook demonstrates how to use the [Minions framework](https://github.com/HazyResearch/minions) with Groq's powerful LLM APIs. Minions is an innovative approach that combines local and cloud LLMs to reduce costs while maintaining high performance.
+## 1. Introduction to Minions
 
-## What is Minions?
+Minions is a framework developed by Stanford's Hazy Research lab that enables efficient collaboration between small, local models running on your device and large, powerful models running in the cloud. By combining Minions with Groq's fast inference and cost-effectiveness, you get reduced costs, minimal latency, and high-quality results similar to using large models exclusively. We will be exploring Minions in general, and then investigating how it is specifically well-suited for multi-hop question-answering, a challenging type of question where frontier models still struggle.
 
-Minions is a framework developed by Stanford's Hazy Research lab that enables efficient collaboration between:
-- Small, local models (running on your device)
-- Large, powerful models (running in the cloud)
-git 
-By combining Minions with Groq's fast inference, you get the best of both worlds: reduced costs, minimal latency, and high-quality results similar to large models.
+## 2. Minion and MinionS Protocols
 
 The framework offers two main protocols:
 
-1. **Minion**: A single local model chats with a cloud model to reach a solution
-   - 30.4x reduction in remote costs
-   - Maintains 87% of cloud model performance
-   - Significantly reduces end-to-end latency when using Groq's fast inference
+### Minion Protocol
+- A single local model chats with a cloud model to reach a solution
+- 30.4x reduction in remote costs
+- Maintains 87% of cloud model performance
+- Significantly reduces end-to-end latency when using Groq's fast inference
 
-2. **MinionS**: Cloud model decomposes the task into subtasks for parallel processing
-   - 5.7x reduction in remote costs
-   - Maintains 97.9% of cloud model performance
-   - Parallel processing further accelerates complex tasks on consumer hardware
+### MinionS Protocol
+- Cloud model decomposes the task into subtasks for parallel processing
+- 5.7x reduction in remote costs
+- Maintains 97.9% of cloud model performance
+- Parallel processing further accelerates complex tasks on consumer hardware
 
-Essentially, Minion is significantly more cost-effective than MinionS, but also has lower performance. One should think about the complexity of the task and decide between Minion and MinionS based on the trade-off between cost and performance.
+Essentially, Minion is significantly more cost-effective than MinionS, but also has lower performance. One should consider the complexity of the task when deciding between Minion and MinionS based on the trade-off between cost and performance.
 
-## Why Groq with Minions?
+## 3. What is Multi-Hop Reasoning?
 
-Groq's LPU (Language Processing Unit) technology delivers exceptionally fast inference times, making it an ideal choice for the Minions framework. When combined:
+### Traditional Approaches to Multi-Hop QA
 
-- **Blazing Speed**: Groq's sub-second response times minimize the latency impact of cloud calls
-- **Consumer-Friendly**: Even modest consumer devices can run sophisticated AI workflows with the quality of large models.
+Multi-hop reasoning refers to answering questions that require connecting multiple pieces of information across different sources or parts of a document. Traditionally, multi-hop QA has been approached through:
+
+1. **Retrieval-Augmented Generation (RAG)**: Systems retrieve multiple relevant passages and then generate answers, but often struggle with complex reasoning chains.
+
+2. **Pipeline Approaches**: Breaking questions into sub-questions, retrieving information for each, then combining results - but these systems are complex to build and maintain.
+
+3. **Single Large Model Calls**: Using frontier models with large context windows to process all information at once - effective but extremely expensive and often inefficient.
+
+### Examples of Multi-Hop Questions
+
+Consider these examples that require multiple reasoning steps:
+- "How did the 2008 housing crisis affect average retirement savings by 2010?"
+- "Compare NVIDIA and Apple's stock performance during the AI boom of 2023"
+- "What impact did the COVID lockdowns have on global supply chain efficiency in Southeast Asian manufacturing?"
+
+#### Anatomy of a Multi-Hop Question
+
+Let's break down how one would approach the question about NVIDIA and Apple stock performance:
+
+1. **First Hop**: Identify when the "AI boom of 2023" occurred (approximate timeframe)
+
+2. **Second Hop**: Gather NVIDIA stock performance data during this period
+
+3. **Third Hop**: Gather Apple stock performance data during the same period
+
+4. **Fourth Hop**: Compare the two companies' performances
+
+5. **Final Synthesis**: Draw conclusions about how each company benefited from or was affected by the AI boom
+
+This multi-step process requires gathering different pieces of information and connecting them in a logical sequence - exactly what makes multi-hop reasoning challenging.
+
+### Current Limitations
+
+Single-call approaches to multi-hop reasoning face several challenges:
+- High tendency for models to hallucinate when connections aren't explicit
+- High token costs when processing large documents
+- Difficulty maintaining focus across multiple steps
+
+## 4. Why MinionS is Suited for Multi-Hop Reasoning
+
+The MinionS architecture of decomposing a query into tasks and synthesizing a final response is well-suited for multi-hop question-answering, as it helps form connections, identify separate pieces of information, and compare them effectively. 
+
+### Current Implementation
+
+Let us consider the multi-hop question in the example file we have provided: 
+"How did Britain's and France's economic recovery differ in the Great Depression?"
+
+Here is how MinionS would go ahead and answer this question: 
+
+**1. Initial Task Decomposition:**
+The remote model hosted on Groq typically will break the task into two parallel tasks, such as:
+```python
+Task 1: "Extract information about Britain's economic recovery during the Great Depression."
+Task 2: "Extract information about France's economic recovery during the Great Depression."
+```
+
+**2. Parallel Local Processing:**
+The local model will these tasks against the context document, returning structured outputs:
+```json
+{
+    "explanation": "Britain devalued its currency early and experienced less severe impacts...",
+    "citation": "Britain, Argentina and Brazil, all of which devalued their currencies early and returned to normal patterns of growth relatively rapidly...",
+    "answer": "Britain's early currency devaluation helped it recover more quickly..."
+}
+```
+
+**3. Expert Aggregation:**
+Finally, the remote model on Groq synthesizes the parallel outputs from the local models into a final answer. This final answer effectively answers the multi-hop question, combining information from several parts of the context. 
+
+## 5. Conclusion
+
+By leveraging the Minions framework with Groq's fast inference capabilities, developers can build applications that handle complex multi-hop reasoning tasks efficiently and cost-effectively. The MinionS protocol in particular offers a powerful alternative to traditional approaches, maintaining near-frontier model quality while significantly reducing costs and running on local devices. 
 
 ## Prerequisites
 
@@ -58,110 +126,13 @@ ollama pull llama3.2
 
 5. Get your Groq API key from [Groq Cloud](https://console.groq.com)
 
-## Examples
-
-This cookbook includes two examples:
-1. Using the Minion protocol (`minion_example.py`)
-2. Using the MinionS protocol (`minions_example.py`)
-
-### Running the Examples
-
-1. Set your Groq API key:
-```bash
-export GROQ_API_KEY='your-api-key-here'
-```
-
-2. Run either example:
-```bash
-python minion_example.py
-# or
-python minions_example.py
-```
-
 ## Example Code
-
-### Minion Example
-
-```python
-from minions.clients.ollama import OllamaClient
-from minions.clients.groq import GroqClient
-from minions.minion import Minion
-
-local_client = OllamaClient(
-    model_name="llama3.2",
-)
-    
-remote_client = GroqClient(
-    model_name="llama-3.3-70b-versatile",
-)
-
-# Instantiate the Minion object with both clients
-minion = Minion(local_client, remote_client)
-
-context = """
-Patient John Doe is a 60-year-old male with a history of hypertension. In his latest checkup, his blood pressure was recorded at 160/100 mmHg, and he reported occasional chest discomfort during physical activity.
-Recent laboratory results show that his LDL cholesterol level is elevated at 170 mg/dL, while his HDL remains within the normal range at 45 mg/dL. Other metabolic indicators, including fasting glucose and renal function, are unremarkable.
-"""
-
-task = "Based on the patient's blood pressure and LDL cholesterol readings in the context, evaluate whether these factors together suggest an increased risk for cardiovascular complications."
-
-# Execute the minion protocol for up to two communication rounds
-output = minion(
-    task=task,
-    context=[context],
-    max_rounds=2
-)
-
-print(output["final_answer"])
-```
-
-### MinionS Example
-
-```python
-from minions.clients.ollama import OllamaClient
-from minions.clients.groq import GroqClient
-from minions.minions import Minions
-from pydantic import BaseModel
-
-class StructuredLocalOutput(BaseModel):
-    explanation: str
-    citation: str | None
-    answer: str | None
-
-local_client = OllamaClient(
-    model_name="llama3.2",
-    temperature=0.0,
-    structured_output_schema=StructuredLocalOutput
-)
-
-remote_client = GroqClient(
-    model_name="llama-3.3-70b-versatile",
-)
-
-# Instantiate the Minion object with both clients
-minions = Minions(local_client, remote_client)
-
-context = """
-Patient John Doe is a 60-year-old male with a history of hypertension. In his latest checkup, his blood pressure was recorded at 160/100 mmHg, and he reported occasional chest discomfort during physical activity.
-Recent laboratory results show that his LDL cholesterol level is elevated at 170 mg/dL, while his HDL remains within the normal range at 45 mg/dL. Other metabolic indicators, including fasting glucose and renal function, are unremarkable.
-"""
-
-task = "Based on the patient's blood pressure and LDL cholesterol readings in the context, evaluate whether these factors together suggest an increased risk for cardiovascular complications."
-
-# Execute the minion protocol for up to two communication rounds
-output = minions(
-    task=task,
-    doc_metadata="Medical Report",
-    context=[context],
-    max_rounds=2
-)
-
-print(output["final_answer"])
+Go ahead and ru the example code: 
+```bash
+python groq_minions.py
 ```
 
 ## Additional Resources
-Check out these additional resources to learn more about Minions and the Groq API: 
-
 - [Minions GitHub Repository](https://github.com/HazyResearch/minions)
 - [Groq API Documentation](https://console.groq.com/docs)
 - [Minions Research Paper](https://arxiv.org/abs/2402.15688)
