@@ -28,21 +28,21 @@ Multi-hop reasoning refers to answering questions that require connecting multip
 Consider these examples that require multiple reasoning steps:
 - "How did the 2008 housing crisis affect average retirement savings by 2010?"
 - "Compare NVIDIA and Apple's stock performance during the AI boom of 2023"
-- "What impact did the COVID lockdowns have on global supply chain efficiency in Southeast Asian manufacturing?"
+- "How did Britain's and France's economic recovery differ in the Great Depression?"
 
 #### Anatomy of a Multi-Hop Question
 
-Let's break down how one would approach the question about NVIDIA and Apple stock performance:
+Let's break down how one would approach the question about Britain and France's economic recovery:
 
-1. **First Hop**: Identify when the "AI boom of 2023" occurred (approximate timeframe)
+1. **First Hop**: Identify when the Great Depression occurred (approximate timeframe)
 
-2. **Second Hop**: Gather NVIDIA stock performance data during this period
+2. **Second Hop**: Gather information about Britain's economic recovery during this period
 
-3. **Third Hop**: Gather Apple stock performance data during the same period
+3. **Third Hop**: Gather information about France's economic recovery during this period
 
-4. **Fourth Hop**: Compare the two companies' performances
+4. **Fourth Hop**: Compare the two countries' economic recovery
 
-5. **Final Synthesis**: Draw conclusions about how each company benefited from or was affected by the AI boom
+5. **Final Synthesis**: Draw conclusions about how each country recovered from and was affected by the Great Depression
 
 This multi-step process requires gathering different pieces of information and connecting them in a logical sequence - exactly what makes multi-hop reasoning challenging.
 
