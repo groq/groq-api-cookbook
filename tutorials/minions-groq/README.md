@@ -8,7 +8,7 @@ Minions is a framework developed by Stanford's [Hazy Research lab](https://hazyr
 
 The framework offers two main protocols:
 
-The Minion Protocol is a single local model chatting with a cloud model to reach a solution, while MinionS is a cloud model decomposing the task into subtasks for parallel processing. While Minion offers slightly lower performance, it is more cost-effective than MinionS. 
+The Minion Protocol is a small, on-device or local model chatting with a cloud-based model to reach a solution without sending long context to the cloud, while the MinionS protocol is a cloud model decomposing the task into smaller subtasks that are executed in parallel by the local model before being aggregated by the local model. While Minion offers slightly lower performance, it is more cost-effective than MinionS. 
 One should consider the complexity of the task when deciding between Minion and MinionS based on the trade-off between cost and performance.
 
 ## 3. What is Multi-Hop Reasoning?
