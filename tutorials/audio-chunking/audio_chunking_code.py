@@ -168,9 +168,10 @@ def find_longest_common_sequence(sequences: list[str], match_by_words: bool = Tr
 
 def merge_transcripts(results: list[tuple[dict, int]]) -> dict:
     """
-    Merge transcription chunks and handle overlaps by:
-    1. Merge all segments within each chunk's overlap/stride
-    2. Merge chunk boundaries using find_longest_common_sequence
+    Merge transcription chunks and handle overlaps.
+    
+    Works with responses from Groq API regardless of whether segments, words,
+    or both were requested via timestamp_granularities.
     
     Args:
         results: List of (result, start_time) tuples
@@ -179,71 +180,221 @@ def merge_transcripts(results: list[tuple[dict, int]]) -> dict:
         dict: Merged transcription
     """
     print("\nMerging results...")
-    final_segments = []
     
-    # Process each chunk's segments
-    processed_chunks = []
-    for i, (chunk, _) in enumerate(results):
-        # Extract full segment data including metadata
+    # First, check if we have segments in our results
+    has_segments = False
+    for chunk, _ in results:
         data = chunk.model_dump() if hasattr(chunk, 'model_dump') else chunk
-        segments = data['segments']
+        if 'segments' in data and data['segments'] is not None and len(data['segments']) > 0:
+            has_segments = True
+            break
+    
+    # Process word-level timestamps regardless of segment presence
+    has_words = False
+    words = []
+    
+    for chunk, chunk_start_ms in results:
+        # Convert Pydantic model to dict
+        data = chunk.model_dump() if hasattr(chunk, 'model_dump') else chunk
+        
+        # Process word timestamps if available
+        if isinstance(data, dict) and 'words' in data and data['words'] is not None and len(data['words']) > 0:
+            has_words = True
+            # Adjust word timestamps based on chunk start time
+            chunk_words = data['words']
+            for word in chunk_words:
+                # Convert chunk_start_ms from milliseconds to seconds for word timestamp adjustment
+                word['start'] = word['start'] + (chunk_start_ms / 1000)
+                word['end'] = word['end'] + (chunk_start_ms / 1000)
+            words.extend(chunk_words)
+        elif hasattr(chunk, 'words') and getattr(chunk, 'words') is not None:
+            has_words = True
+            # Handle Pydantic model for words
+            chunk_words = getattr(chunk, 'words')
+            processed_words = []
+            for word in chunk_words:
+                if hasattr(word, 'model_dump'):
+                    word_dict = word.model_dump()
+                else:
+                    # Create a dict from the word object
+                    word_dict = {
+                        'word': getattr(word, 'word', ''),
+                        'start': getattr(word, 'start', 0) + (chunk_start_ms / 1000),
+                        'end': getattr(word, 'end', 0) + (chunk_start_ms / 1000)
+                    }
+                processed_words.append(word_dict)
+            words.extend(processed_words)
+    
+    # If we don't have segments, just merge the full texts
+    if not has_segments:
+        print("No segments found in transcription results. Merging full texts only.")
+        
+        texts = []
+        
+        for chunk, _ in results:
+            # Convert Pydantic model to dict
+            data = chunk.model_dump() if hasattr(chunk, 'model_dump') else chunk
+            
+            # Get text - handle both dictionary and object access
+            if isinstance(data, dict):
+                text = data.get('text', '')
+            else:
+                # For Pydantic models or other objects
+                text = getattr(chunk, 'text', '')
+            
+            texts.append(text)
+        
+        merged_text = " ".join(texts)
+        result = {"text": merged_text}
+        
+        # Include word-level timestamps if available
+        if has_words:
+            result["words"] = words
+        
+        # Return an empty segments list since segments weren't requested
+        result["segments"] = []
+        return result
+    
+    # If we do have segments, proceed with the segment merging logic
+    print("Merging segments across chunks...")
+    final_segments = []
+    processed_chunks = []
+    
+    for i, (chunk, chunk_start_ms) in enumerate(results):
+        data = chunk.model_dump() if hasattr(chunk, 'model_dump') else chunk
+        
+        # Handle both dictionary and object access for segments
+        if isinstance(data, dict):
+            segments = data.get('segments', [])
+        else:
+            segments = getattr(chunk, 'segments', [])
+            # Convert segments to list of dicts if needed
+            if hasattr(segments, 'model_dump'):
+                segments = segments.model_dump()
+            elif not isinstance(segments, list):
+                segments = []
         
         # If not last chunk, find next chunk start time
         if i < len(results) - 1:
-            next_start = results[i + 1][1]
+            next_start = results[i + 1][1]  # This is in milliseconds
             
             # Split segments into current and overlap based on next chunk's start time
             current_segments = []
             overlap_segments = []
             
             for segment in segments:
-                if segment['end'] * 1000 > next_start:
+                # Handle both dict and object access for segment
+                if isinstance(segment, dict):
+                    segment_end = segment['end']
+                else:
+                    segment_end = getattr(segment, 'end', 0)
+                
+                # Convert segment end time to ms and compare with next chunk start time
+                if segment_end * 1000 > next_start:
+                    # Make sure segment is a dict
+                    if not isinstance(segment, dict) and hasattr(segment, 'model_dump'):
+                        segment = segment.model_dump()
+                    elif not isinstance(segment, dict):
+                        # Create a dict from the segment object
+                        segment = {
+                            'text': getattr(segment, 'text', ''),
+                            'start': getattr(segment, 'start', 0),
+                            'end': segment_end
+                        }
                     overlap_segments.append(segment)
                 else:
+                    # Make sure segment is a dict
+                    if not isinstance(segment, dict) and hasattr(segment, 'model_dump'):
+                        segment = segment.model_dump()
+                    elif not isinstance(segment, dict):
+                        # Create a dict from the segment object
+                        segment = {
+                            'text': getattr(segment, 'text', ''),
+                            'start': getattr(segment, 'start', 0),
+                            'end': segment_end
+                        }
                     current_segments.append(segment)
             
             # Merge overlap segments if any exist
             if overlap_segments:
                 merged_overlap = overlap_segments[0].copy()
                 merged_overlap.update({
-                    'text': ' '.join(s['text'] for s in overlap_segments),
-                    'end': overlap_segments[-1]['end']
+                    'text': ' '.join(s.get('text', '') if isinstance(s, dict) else getattr(s, 'text', '') 
+                                   for s in overlap_segments),
+                    'end': overlap_segments[-1].get('end', 0) if isinstance(overlap_segments[-1], dict) 
+                           else getattr(overlap_segments[-1], 'end', 0)
                 })
                 current_segments.append(merged_overlap)
                 
             processed_chunks.append(current_segments)
         else:
-            # For last chunk, keep all segments
-            processed_chunks.append(segments)
+            # For last chunk, ensure all segments are dicts
+            dict_segments = []
+            for segment in segments:
+                if not isinstance(segment, dict) and hasattr(segment, 'model_dump'):
+                    dict_segments.append(segment.model_dump())
+                elif not isinstance(segment, dict):
+                    dict_segments.append({
+                        'text': getattr(segment, 'text', ''),
+                        'start': getattr(segment, 'start', 0),
+                        'end': getattr(segment, 'end', 0)
+                    })
+                else:
+                    dict_segments.append(segment)
+            processed_chunks.append(dict_segments)
     
     # Merge boundaries between chunks
     for i in range(len(processed_chunks) - 1):
+        # Skip if either chunk has no segments
+        if not processed_chunks[i] or not processed_chunks[i+1]:
+            continue
+            
         # Add all segments except last from current chunk
-        final_segments.extend(processed_chunks[i][:-1])
+        if len(processed_chunks[i]) > 1:
+            final_segments.extend(processed_chunks[i][:-1])
         
         # Merge boundary segments
         last_segment = processed_chunks[i][-1]
-        first_segment = processed_chunks[i + 1][0]
+        first_segment = processed_chunks[i+1][0]
         
-        merged_text = find_longest_common_sequence([last_segment['text'], first_segment['text']])
-        merged_segment = last_segment.copy()
+        merged_text = find_longest_common_sequence([
+            last_segment.get('text', '') if isinstance(last_segment, dict) else getattr(last_segment, 'text', ''),
+            first_segment.get('text', '') if isinstance(first_segment, dict) else getattr(first_segment, 'text', '')
+        ])
+        
+        merged_segment = last_segment.copy() if isinstance(last_segment, dict) else {
+            'text': getattr(last_segment, 'text', ''),
+            'start': getattr(last_segment, 'start', 0),
+            'end': getattr(last_segment, 'end', 0)
+        }
+        
         merged_segment.update({
             'text': merged_text,
-            'end': first_segment['end']
+            'end': first_segment.get('end', 0) if isinstance(first_segment, dict) else getattr(first_segment, 'end', 0)
         })
         final_segments.append(merged_segment)
     
     # Add all segments from last chunk
-    if processed_chunks:
+    if processed_chunks and processed_chunks[-1]:
         final_segments.extend(processed_chunks[-1])
     
     # Create final transcription
-    final_text = ' '.join(segment['text'] for segment in final_segments)
+    final_text = ' '.join(
+        segment.get('text', '') if isinstance(segment, dict) else getattr(segment, 'text', '')
+        for segment in final_segments
+    )
     
-    return {
+    # Create result with both segments and words (if available)
+    result = {
         "text": final_text,
         "segments": final_segments
     }
+    
+    # Include word-level timestamps if available
+    if has_words:
+        result["words"] = words
+    
+    return result
 
 def save_results(result: dict, audio_path: Path) -> Path:
     """
