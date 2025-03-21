@@ -1,6 +1,10 @@
 # Groq Batch Processing
 
-This tutorial will guide you through the process of uploading and processing batch jobs using the Groq API. Follow these five steps to successfully handle batch requests.
+This tutorial will guide you through the process of uploading and processing batch jobs using the Groq API. 
+
+
+https://github.com/user-attachments/assets/8ef2e06b-6153-43d3-9122-6bc11b786efd
+
 
 ## Step 1: Set Up Dependencies:
 ```
