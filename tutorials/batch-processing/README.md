@@ -7,9 +7,10 @@ https://github.com/user-attachments/assets/8ef2e06b-6153-43d3-9122-6bc11b786efd
 
 
 ## Step 1: Set Up Dependencies:
-```
+
 Before interacting with the Groq API, you need to install and import the required dependencies.
 
+```
 import os
 from dotenv import load_dotenv
 import requests # Install with: pip install requests
