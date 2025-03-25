@@ -22,7 +22,7 @@ load_dotenv()
 # Access environment variables
 api_key = os.getenv("GROQ_API_KEY")
 ```
-Make sure you have a `.env` file containing your `GROQ_API_KEY`.
+Make sure you have a `.env` file containing your `GROQ_API_KEY`. If you don't have one already, you can create a free account and generate one [here](https://console.groq.com/keys).
 
 ### Create a virtual environment
 `python3 -m venv venv`
