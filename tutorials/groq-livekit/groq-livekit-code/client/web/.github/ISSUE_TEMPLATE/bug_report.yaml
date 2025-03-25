@@ -1,0 +1,56 @@
+name: "\U0001F41E Bug report"
+description: Report an issue with LiveKit Agent Playground
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+        Please report security issues by email to security@livekit.io
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: Describe what you are expecting vs. what happens instead.
+      placeholder: |
+        ### What I'm expecting
+        ### What happens instead
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: A detailed step-by-step guide on how to reproduce the issue or (preferably) a link to a repository that reproduces the issue. Reproductions must be [short, self-contained and correct](http://sscce.org/) and must not contain files or code that aren't relevant to the issue. It's best if you use the sample app in `example/index.ts` as a starting point for your reproduction. We will prioritize issues that include a working minimal reproduction repository.
+      placeholder: Reproduction
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: "Please include browser console and server logs around the time this bug occurred. Enable debug logging by calling `setLogLevel('debug')` from the livekit-client package as early as possible. Please try not to insert an image but copy paste the log text."
+      render: shell
+  - type: textarea
+    id: system-info
+    attributes:
+      label: System Info
+      description: Please mention the OS (incl. Version) and Browser (including exact version) on which you are seeing this issue. For ease of use you can run `npx envinfo --system --binaries --browsers --npmPackages "{livekit-client, @livekit/*}"` from within your livekit project, to give us all the needed info about your current environment
+      render: shell
+      placeholder: System, Binaries, Browsers
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - annoyance
+        - serious, but I can work around it
+        - blocking an upgrade
+        - blocking all usage of LiveKit
+    validations:
+      required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Information
