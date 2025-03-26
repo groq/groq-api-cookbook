@@ -1,0 +1,6 @@
+livekit-agents
+livekit-plugins-openai
+livekit-plugins-silero
+livekit-plugins-cartesia
+python-dotenv
+livekit-plugins-groq
