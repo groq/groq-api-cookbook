@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
 from dotenv import load_dotenv
-from DFS import dfs_reasoning_solver_full_tree
+from DFS import dfs_reasoning_solver_full_tree, get_all_paths_from_root, score_reasoning_path, summarize_best_path
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -41,7 +41,20 @@ def chat():
         if not reasoning_prompt:
             return jsonify({'error': 'No message provided'}), 400
 
-        answer = dfs_reasoning_solver_full_tree(reasoning_prompt)
+        root = dfs_reasoning_solver_full_tree(reasoning_prompt)
+        all_paths = get_all_paths_from_root(root)
+        
+        best_score = -1
+        best_path = None
+    
+        for i, path in enumerate(all_paths, start=1):
+            score = score_reasoning_path(path, reasoning_prompt)
+            
+            if score > best_score:
+                best_score = score
+                best_path = path
+
+        answer = summarize_best_path(reasoning_prompt, best_path)
 
         response = jsonify({
             'message': answer
