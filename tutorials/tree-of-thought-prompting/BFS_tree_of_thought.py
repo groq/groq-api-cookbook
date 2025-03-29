@@ -4,7 +4,6 @@
 # Given the prompt of a reasoning task, the script will generate a tree of thought and then
 # solve the task by traversing the tree.
 
-
 import os
 from dotenv import load_dotenv
 from groq import Groq
@@ -130,8 +129,8 @@ def score_reasoning_path(path, original_prompt):
         Here is one possible reasoning path:
         {joined_reasoning}
 
-        Please rate the overall quality and effectiveness of this reasoning path on a scale from 1 to 10.
-        Just respond with a number between 1 and 10.
+        Please rate the overall quality and effectiveness of this reasoning path on a scale from 1 to 100.
+        Just respond with a number between 1 and 100.
     """
 
     score_str = call_llm(prompt).strip()
@@ -140,6 +139,26 @@ def score_reasoning_path(path, original_prompt):
     except ValueError:
         return 0  # fallback if model responds weirdly
 
+
+# summarize_best_path function is used to summarize the best path
+# :param prompt: The original prompt to send to the LLM
+# :param path: The best path to summarize
+# :return: The summarized path
+def summarize_best_path(prompt, path):
+    
+    chat_completion = client.chat.completions.create(
+        messages=[
+            {
+                "role": "user",
+                "content": f"Given the prompt: {prompt}, summarize the best reasoning path as precisely and simply as possible \
+                    and give the final answer. The reasoning path is: {path}.",
+            }
+        ],
+        model="llama-3.3-70b-versatile",
+    )
+
+    return chat_completion.choices[0].message.content
+    
 
 if __name__ == "__main__":
     reasoning_prompt = input("Enter a reasoning problem: ")
@@ -161,7 +180,7 @@ if __name__ == "__main__":
 
     for i, path in enumerate(all_paths, start=1):
         score = score_reasoning_path(path, reasoning_prompt)
-        print(f"Path {i}: Scored {score}/10")
+        print(f"Path {i}: Scored {score}/100")
         
         if score > best_score:
             best_score = score
@@ -171,4 +190,7 @@ if __name__ == "__main__":
     print("\nBest Reasoning Path:")
     for i, step in enumerate(best_path, 1):
         print(f"Step {i}: {step}")
-    print(f"\nFinal Score: {best_score}/10")
+    print(f"\nFinal Score: {best_score}/100")
+
+    print("\nThe solution is...")
+    print(summarize_best_path(reasoning_prompt, best_path))
