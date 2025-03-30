@@ -1,0 +1,5 @@
+python-dotenv
+groq
+networkx
+matplotlib
+pygraphviz
