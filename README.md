@@ -62,6 +62,7 @@ If there are guides or examples that you'd like to see in the future, feel free 
 - [CrewAI with Groq](/tutorials/crewai-mixture-of-agents): Build a mixture of agents application with CrewAI.
 - [E2B with Groq](/tutorials/e2b-code-interpreting): Build code execution with the Code Interpreter SDK by E2B.
 - [JigsawStack with Groq](/tutorials/jigsawstack-prompt-engine): Learn how to automate your workflow and choose the best LLM for your prompts using JigsawStack's Prompt Engine powered by Groq. 
+- [Mem0 with Groq](/tutorials/mem0-groq/mem0-groq-tutorial.ipynb): Build memory-augmented agents using Mem0's persistent memory with Groq-powered LLMs.
 - [Langroid with Groq](/tutorials/langroid-llm-agents): Create a multi-agent system using Langroid and Groq.
 - [LiteLLM Proxy with Groq](/tutorials/litellm-proxy-groq): Call Groq through the LiteLLM proxy.
 - [Toolhouse with Groq](/tutorials/toolhouse-for-tool-use-with-groq-api): Use Toolhouse to create simple tool integrations with Groq.
