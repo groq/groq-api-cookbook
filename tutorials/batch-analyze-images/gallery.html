@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groq Batch Image Analysis Gallery</title>
+  <style>
+    body {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      background: #faf7f2;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+
+    .upload-section {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+      padding: 32px;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .upload-section input[type="file"] {
+      display: none;
+    }
+
+    .custom-file-label {
+      display: inline-block;
+      padding: 7px 16px;
+      background: #ff9100;
+      color: #fff;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.98rem;
+      font-weight: 500;
+      transition: background 0.2s;
+      margin-top: 6px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(255, 145, 0, 0.08);
+    }
+
+    .custom-file-label:hover {
+      background: #ff7300;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s, box-shadow 0.15s;
+      min-height: 420px;
+    }
+
+    .card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .image-bg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+      aspect-ratio: 4/3;
+      background: var(--dominant-color, #eee);
+      transition: background 0.2s;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-bg img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      background: #fff;
+    }
+
+    .card-content {
+      padding: 20px 18px 16px 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .description {
+      font-size: 1.08rem;
+      color: #222;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: #f7f7f7;
+      color: #555;
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      border: 1px solid #ececec;
+      margin-bottom: 4px;
+      margin-right: 2px;
+      cursor: pointer;
+      outline: none;
+      transition: background 0.15s, border 0.15s;
+      box-shadow: none;
+      appearance: none;
+      display: inline-block;
+    }
+
+    .tag:focus,
+    .tag:hover {
+      background: #ffe0b2;
+      border-color: #ff9100;
+      color: #d35400;
+    }
+
+    .tag-highlight {
+      background: #ff9100 !important;
+      color: #fff !important;
+      border-color: #ff9100 !important;
+    }
+
+    .no-images {
+      text-align: center;
+      color: #aaa;
+      font-size: 1.2rem;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 0 4px;
+      }
+
+      .card-content {
+        padding: 14px 8px 12px 8px;
+      }
+    }
+
+    .dominant-color-circle {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2.5px solid #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+      z-index: 2;
+    }
+
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 64px;
+      border-bottom: 1.5px solid #f2f2f2;
+    }
+
+    .top-bar-title {
+      font-size: 1.32rem;
+      font-weight: 700;
+      color: #222;
+      letter-spacing: 0.01em;
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    .top-bar-upload {
+      display: flex;
+      align-items: center;
+    }
+
+    .top-bar .custom-file-label {
+      margin: 0;
+      font-size: 0.98rem;
+      padding: 7px 16px;
+      background: #ff9100;
+      color: #fff;
+      border: none;
+      box-shadow: 0 2px 8px rgba(255, 145, 0, 0.08);
+    }
+
+    .top-bar .custom-file-label:hover {
+      background: #ff7300;
+    }
+
+    @media (max-width: 600px) {
+      .top-bar {
+        padding: 0 8px;
+        height: 54px;
+      }
+
+      .top-bar-title {
+        font-size: 1.01rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===================== Top Bar ===================== -->
+  <div class="top-bar">
+    <div class="top-bar-title">Groq Batch Image Analysis Gallery</div>
+    <div class="top-bar-upload">
+      <!-- Top bar file input (mirrors main upload) -->
+      <label class="custom-file-label" for="fileInputTop">Select JSONL File</label>
+      <input type="file" id="fileInputTop" accept=".jsonl,.txt" style="display:none;">
+    </div>
+  </div>
+  <!-- ===================== Main Container ===================== -->
+  <div class="container">
+    <!-- ========== Upload Section ========== -->
+    <div class="upload-section" id="uploadSection">
+      <label class="custom-file-label" for="fileInput">Select JSONL File</label>
+      <input type="file" id="fileInput" accept=".jsonl,.txt">
+      <div id="upload-info" style="margin-top:18px;color:#888;font-size:1rem;"></div>
+    </div>
+    <!-- ========== Gallery Grid ========== -->
+    <div id="gallery" class="gallery"></div>
+    <!-- ========== No Images Message ========== -->
+    <div id="no-images" class="no-images" style="display:none;">No images to display.</div>
+  </div>
+  <!-- ===================== JavaScript ===================== -->
+  <script>
+    // -------------------- DOM Elements --------------------
+    const fileInput = document.getElementById('fileInput');
+    const fileInputTop = document.getElementById('fileInputTop');
+    const gallery = document.getElementById('gallery');
+    const noImages = document.getElementById('no-images');
+    const uploadInfo = document.getElementById('upload-info');
+    const uploadSection = document.getElementById('uploadSection');
+
+    // -------------------- Utility Functions --------------------
+    /**
+     * Clear the gallery and hide the 'no images' message.
+     */
+    function clearGallery() {
+      gallery.innerHTML = '';
+      noImages.style.display = 'none';
+    }
+
+    /**
+     * Show the 'no images' message and clear the gallery.
+     */
+    function showNoImages() {
+      gallery.innerHTML = '';
+      noImages.style.display = '';
+    }
+
+    /**
+     * Parse the assistant's content, handling code block markers and common JSON issues.
+     * @param {string} content - The raw content string from the JSONL file.
+     * @returns {object|null} - Parsed JSON object or null if invalid.
+     */
+    function parseAssistantContent(content) {
+      // Remove leading/trailing whitespace and possible code block markers
+      let trimmed = content.trim();
+      if (trimmed.startsWith('```json')) {
+        trimmed = trimmed.replace(/^```json/, '').replace(/```$/, '').trim();
+      } else if (trimmed.startsWith('```')) {
+        trimmed = trimmed.replace(/^```/, '').replace(/```$/, '').trim();
+      }
+      try {
+        return JSON.parse(trimmed);
+      } catch (e) {
+        // Try to fix common issues (e.g., trailing commas)
+        try {
+          return JSON.parse(trimmed.replace(/,\s*}/g, '}').replace(/,\s*]/g, ']'));
+        } catch (e2) {
+          return null;
+        }
+      }
+    }
+
+    /**
+     * Sanitize a URL to ensure it is valid and safe.
+     * @param {string} url - The URL to sanitize.
+     * @returns {string} - A sanitized URL or a safe fallback.
+     */
+     function sanitizeUrl(url) {
+      try {
+        const parsedUrl = new URL(url, window.location.origin);
+        // Allow only http and https schemes
+        if (parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:') {
+          return parsedUrl.href;
+        }
+      } catch (e) {
+        // Invalid URL
+      }
+      return '#'; // Fallback to a safe default
+    }
+
+    // -------------------- Card Creation --------------------
+    /**
+     * Create a gallery card DOM element for an image entry.
+     * @param {object} param0 - Image data (image_url, dominant_color, description, tags, author info)
+     * @returns {HTMLElement} - Card element
+     */
+    function createCard({ image_url, dominant_color, description, tags, author_name, author_username }) {
+      const card = document.createElement('div');
+      card.className = 'card';
+      // Image background
+      const imageBg = document.createElement('div');
+      imageBg.className = 'image-bg';
+      imageBg.style.setProperty('--dominant-color', dominant_color || '#eee');
+      // Dominant color circle
+      const colorCircle = document.createElement('div');
+      colorCircle.className = 'dominant-color-circle';
+      colorCircle.style.background = dominant_color || '#eee';
+      imageBg.appendChild(colorCircle);
+      if (image_url) {
+        const link = document.createElement('a');
+        link.href = sanitizeUrl(image_url);
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        const img = document.createElement('img');
+        img.src = sanitizeUrl(image_url);
+        img.alt = description || 'Gallery image';
+        link.appendChild(img);
+        imageBg.appendChild(link);
+      } else {
+        // Placeholder if no image
+        const placeholder = document.createElement('div');
+        placeholder.style = 'width:100%;height:120px;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:1.2rem;';
+        placeholder.textContent = 'No image';
+        imageBg.appendChild(placeholder);
+      }
+      card.appendChild(imageBg);
+      // Content
+      const content = document.createElement('div');
+      content.className = 'card-content';
+      // Credit line
+      if (author_name && author_username) {
+        const credit = document.createElement('div');
+        credit.style = 'font-size:0.93rem;color:#888;margin-bottom:6px;line-height:1.3;';
+        const creditText = document.createTextNode('Photo by ');
+        const authorLink = document.createElement('a');
+        authorLink.href = `https://unsplash.com/@${encodeURIComponent(author_username)}?utm_source=your_app_name&utm_medium=referral`;
+        authorLink.target = '_blank';
+        authorLink.rel = 'noopener noreferrer';
+        authorLink.style.color = '#888';
+        authorLink.style.textDecoration = 'underline';
+        authorLink.textContent = author_name;
+        const onText = document.createTextNode(' on ');
+        const unsplashLink = document.createElement('a');
+        unsplashLink.href = 'https://unsplash.com/?utm_source=your_app_name&utm_medium=referral';
+        unsplashLink.target = '_blank';
+        unsplashLink.rel = 'noopener noreferrer';
+        unsplashLink.style.color = '#888';
+        unsplashLink.style.textDecoration = 'underline';
+        unsplashLink.textContent = 'Unsplash';
+        credit.appendChild(creditText);
+        credit.appendChild(authorLink);
+        credit.appendChild(onText);
+        credit.appendChild(unsplashLink);
+        content.appendChild(credit);
+      }
+      // Description
+      const desc = document.createElement('div');
+      desc.className = 'description';
+      desc.textContent = description || '';
+      content.appendChild(desc);
+      // Tag buttons
+      const currentSearch = (searchBox && searchBox.value.trim().toLowerCase()) || '';
+      if (tags && Array.isArray(tags) && tags.length) {
+        const tagsDiv = document.createElement('div');
+        tagsDiv.className = 'tags';
+        tags.forEach(tag => {
+          const tagEl = document.createElement('button');
+          tagEl.type = 'button';
+          tagEl.className = 'tag';
+          tagEl.textContent = tag;
+          tagEl.setAttribute('aria-label', `Search for tag ${tag}`);
+          tagEl.style.cursor = 'pointer';
+          if (currentSearch && tag.toLowerCase() === currentSearch) {
+            tagEl.classList.add('tag-highlight');
+          }
+          // Clicking a tag sets the search box
+          tagEl.addEventListener('click', () => {
+            if (searchBox) {
+              searchBox.value = tag;
+              const event = new Event('input', { bubbles: true });
+              searchBox.dispatchEvent(event);
+              searchBox.focus();
+            }
+          });
+          tagsDiv.appendChild(tagEl);
+        });
+        content.appendChild(tagsDiv);
+      }
+      card.appendChild(content);
+      return card;
+    }
+
+    // -------------------- Gallery Rendering & Search --------------------
+    let allImages = [];
+    let searchBox = null;
+
+    /**
+     * Render the gallery with the given images.
+     * @param {Array} images - Array of image objects.
+     */
+    function renderGallery(images) {
+      gallery.innerHTML = '';
+      if (!images.length) {
+        showNoImages();
+        return;
+      }
+      images.forEach(img => {
+        gallery.appendChild(createCard(img));
+      });
+      noImages.style.display = 'none';
+    }
+
+    /**
+     * Create and return the search box input element.
+     * Adds filtering logic on input.
+     */
+    function createSearchBox() {
+      if (searchBox) return searchBox;
+      searchBox = document.createElement('input');
+      searchBox.type = 'text';
+      searchBox.placeholder = 'Search by description or tag...';
+      searchBox.style = 'width:100%;max-width:420px;display:block;margin:0 auto 28px auto;padding:12px 18px;font-size:1.1rem;border-radius:999px;border:1.5px solid #ececec;box-shadow:0 2px 8px rgba(0,0,0,0.04);background:#fff;color:#222;outline:none;transition:border 0.2s;';
+      searchBox.addEventListener('input', () => {
+        const q = searchBox.value.trim().toLowerCase();
+        if (!q) {
+          renderGallery(allImages);
+          return;
+        }
+        const filtered = allImages.filter(img => {
+          const desc = (img.description || '').toLowerCase();
+          const tags = (img.tags || []).map(t => t.toLowerCase()).join(' ');
+          return desc.includes(q) || tags.includes(q);
+        });
+        renderGallery(filtered);
+      });
+      return searchBox;
+    }
+
+    // -------------------- File Upload & Parsing --------------------
+    /**
+     * Handle file input change, parse JSONL, and render gallery.
+     */
+    fileInput.addEventListener('change', async (e) => {
+      clearGallery();
+      uploadInfo.textContent = '';
+      if (searchBox) {
+        searchBox.remove();
+        searchBox = null;
+      }
+      const file = e.target.files[0];
+      if (!file) return;
+      uploadInfo.textContent = `Loading ${file.name}...`;
+      const text = await file.text();
+      const lines = text.split(/\r?\n/).filter(Boolean);
+      let images = [];
+      for (const line of lines) {
+        try {
+          const obj = JSON.parse(line);
+          const content = obj?.response?.body?.choices?.[0]?.message?.content;
+          if (content) {
+            const parsed = parseAssistantContent(content);
+            if (parsed && (parsed.image_url || parsed.description)) {
+              images.push(parsed);
+            }
+          }
+        } catch (err) {
+          // skip invalid lines
+        }
+      }
+      allImages = images;
+      if (!images.length) {
+        showNoImages();
+        uploadInfo.textContent = 'No valid images found.';
+        uploadSection.style.display = '';
+        return;
+      }
+      uploadSection.style.display = 'none';
+      // Add search box
+      const search = createSearchBox();
+      uploadSection.insertAdjacentElement('afterend', search);
+      renderGallery(images);
+      uploadInfo.textContent = `Loaded ${images.length} image${images.length > 1 ? 's' : ''}.`;
+    });
+
+    // -------------------- Top Bar Upload Button Logic --------------------
+    /**
+     * Mirror the top bar file input to the main upload for unified handling.
+     */
+    fileInputTop.addEventListener('change', (e) => {
+      // Mirror the event to the main file input for unified handling
+      fileInput.files = fileInputTop.files;
+      const event = new Event('change', { bubbles: true });
+      fileInput.dispatchEvent(event);
+      // Reset top input so you can re-upload the same file if needed
+      fileInputTop.value = '';
+    });
+
+    // -------------------- Search Box Tag Highlight Refresh --------------------
+    /**
+     * Re-render gallery on search input to update tag highlights.
+     */
+    if (!window._gallerySearchListenerAdded) {
+      window._gallerySearchListenerAdded = true;
+      document.addEventListener('input', (e) => {
+        if (e.target && e.target === searchBox) {
+          renderGallery(
+            allImages.filter(img => {
+              const q = searchBox.value.trim().toLowerCase();
+              if (!q) return true;
+              const desc = (img.description || '').toLowerCase();
+              const tags = (img.tags || []).map(t => t.toLowerCase()).join(' ');
+              return desc.includes(q) || tags.includes(q);
+            })
+          );
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
