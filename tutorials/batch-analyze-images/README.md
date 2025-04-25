@@ -3,6 +3,34 @@
 This tutorial will guide you through the process of analyzing a bulk set of images to tag and categorize them. We'll be using the [Groq Batch API](https://console.groq.com/docs/batch), which is great for asynchronously processing large datasets and workloads at a reduced price.
 
 
+## Setup This Tutorial
+
+To clone just this tutorial (instead of the entire cookbook), run these commands:
+
+For Linux/Mac:
+```bash
+mkdir groq-batch-analyze-images
+cd groq-batch-analyze-images
+git init
+git remote add origin https://github.com/groq/groq-api-cookbook.git
+git config core.sparseCheckout true
+echo "tutorials/batch-analyze-images/*" >> .git/info/sparse-checkout
+git pull origin main
+cd tutorials/batch-analyze-images
+```
+
+For Windows (Command Prompt):
+```cmd
+mkdir groq-batch-analyze-images
+cd groq-batch-analyze-images
+git init
+git remote add origin https://github.com/groq/groq-api-cookbook.git
+git config core.sparseCheckout true
+echo tutorials/batch-analyze-images/* > .git\info\sparse-checkout
+git pull origin main
+cd tutorials/batch-analyze-images
+```
+
 ## Download Dataset
 
 First, we need to download our images dataset. For this, we'll be using [Unsplash](https://unsplash.com) to grab 100 random images to analyze.

@@ -9,6 +9,7 @@ Groq API Cookbook
 
 <p align="center">
   <a href="#getting-started">Getting Started</a> •
+  <a href="#tutorials">Tutorials</a> •
  <a href="#have-questions">Questions</a> •
  <a href="#find-a-bug">Bug Reporting</a> •
  <a href="#contributing-to-the-cookbook">Contributing</a>
@@ -18,20 +19,8 @@ Groq API Cookbook
 ## Getting started
 Are you ready to cook? 🚀 This is a collection of example code and guides for Groq API for you to explore. To run these examples, you'll need a Groq API key that you can get for free by creating an account [here](https://console.groq.com/). 
 
-## Have questions?
-Join our [developer community on Discord](https://discord.com/invite/groq) where we discuss useful tools, share guidance, and collaborate with industry professionals!
 
-## Find a bug?
-Open an issue on GitHub [here](https://github.com/groq/groq-api-cookbook/issues). 
-
-## Contributing to the Cookbook
-The Groq API Cookbook is community-driven and we are always looking for contributions in the forms of ideas, fixes, improvements, or suggestions! We greatly appreciate the open-source community and are committed to helping our community get good resources.
-
-If you're interested in contributing to our cookbook, please first check out our [contribution guidelines](https://github.com/groq/groq-api-cookbook/blob/main/CONTRIBUTING.md). We welcome high-quality guides and examples that will help our community and can't wait to see what you cook up! 🧑‍🍳
-
-If there are guides or examples that you'd like to see in the future, feel free to make a suggestion [here](https://github.com/groq/groq-api-cookbook/issues).
-
-## Table of tutorials
+## Tutorials
 
 ### Guardrails
 - [Content Filtering with Llama Guard](/tutorials/llama-guard-safe-chatbot): Learn how to use Llama Guard to help prevent abuse and engagement with inappropriate content.
@@ -71,3 +60,16 @@ If there are guides or examples that you'd like to see in the future, feel free 
 - [Mixture of Agents](/tutorials/mixture-of-agents): Create a mixture-of-agents system powered by Groq.
 - [Game Recap with MoA](/tutorials/agno-mixture-of-agents): Use a mixture-of-agents approach to generate comprehensive MLB game recaps.
 
+
+## Have questions?
+Join our [developer community on Discord](https://discord.com/invite/groq) where we discuss useful tools, share guidance, and collaborate with industry professionals!
+
+## Find a bug?
+Open an issue on GitHub [here](https://github.com/groq/groq-api-cookbook/issues). 
+
+## Contributing to the Cookbook
+The Groq API Cookbook is community-driven and we are always looking for contributions in the forms of ideas, fixes, improvements, or suggestions! We greatly appreciate the open-source community and are committed to helping our community get good resources.
+
+If you're interested in contributing to our cookbook, please first check out our [contribution guidelines](https://github.com/groq/groq-api-cookbook/blob/main/CONTRIBUTING.md). We welcome high-quality guides and examples that will help our community and can't wait to see what you cook up! 🧑‍🍳
+
+If there are guides or examples that you'd like to see in the future, feel free to make a suggestion [here](https://github.com/groq/groq-api-cookbook/issues).
