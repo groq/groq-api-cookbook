@@ -52,6 +52,7 @@ If there are guides or examples that you'd like to see in the future, feel free 
 - [Structured Output Generator](/tutorials/structured-output-instructor): Learn how to use the Instructor library to create structured output with tools and objects. Special thanks to our GroqChamp, @S4mpl3r, for contributing!
 
 ### Multimodal
+- [Batch Image Processing](/tutorials/batch-analyze-images): Process and analyze thousands of images using Llama 4 Maverick's multimodal capabilities with [Groq Batch](https://console.groq.com/docs/batch).
 - [Multimodal Image Processing](/tutorials/multimodal-image-processing): Process and analyze images using a leading vision model.
 
 ### Integrations
