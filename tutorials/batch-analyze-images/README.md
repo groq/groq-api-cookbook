@@ -2,6 +2,19 @@
 
 This tutorial will guide you through the process of analyzing a bulk set of images to tag and categorize them. We'll be using the [Groq Batch API](https://console.groq.com/docs/batch), which is great for asynchronously processing large datasets and workloads at a reduced price.
 
+## Real-World Applications
+This approach is valuable for various scenarios, from business applications to personal projects, such as:
+
+- **Retail inventory management**: Automatically categorize thousands of product images to streamline catalog management.
+- **Content moderation**: Process user-generated content at scale to identify inappropriate material
+- **Insurance claims processing**: Analyze damage photos in bulk to accelerate assessment and settlement
+- **Medical imaging**: Pre-screen large batches of diagnostic images to prioritize cases needing specialist attention
+- **Manufacturing quality control**: Detect defects across production line images to improve quality assurance
+- **Social media content creation**: Process batches of images to generate engaging captions or hashtag suggestions
+- **Event photography**: Sort and categorize photos from weddings or other events by subjects, groups, or activities
+
+
+By the end of this tutorial, you'll have a framework (and scripts!) for implementing these types of solutions for your specific needs, with the cost efficiency that comes from batch processing.
 
 ## Setup This Tutorial
 
@@ -71,19 +84,21 @@ Now let's dive into the code!
 
 To create a batch job, we need to upload a `jsonl` file to Groq. This `jsonl` file is a list of requests that we want Groq to perform. For more information, please take a look at the [Groq batch processing documentation](https://console.groq.com/docs/batch).
 
-In our case, we want to send a `jsonl` file with requests including URLs to the images we want to analyze and our prompts that tell the AI what to do. 
+In our case, we want to send a `jsonl` file with requests including URLs to the images we want to analyze and our prompts that tell the model what to do. To automate the process of creating a `jsonl` file, we'll use a few Node.js scripts to generate requests based on our dataset and store them in the final `jsonl` file that we'll upload to Groq.
+
+[Read more about `jsonl` files here.](https://jsonlines.org/)
 
 Let's take a look at `src/helpers.ts`.
 
 Inside, we can see a function `createJsonlFile`, which creates an object filled with lines of JSON. Each JSON line corresponds to a [chat completion request](https://console.groq.com/docs/text-chat). We're using the [Llama 4 Maverick model](https://console.groq.com/docs/model/llama-4-maverick-17b-128e-instruct) because it has intelligent vision capabilities, which is necessary for analyzing images.
 
 In the messages array, the user has a few pieces of content in their messages:
- - the image analysis prompt, telling the AI how and what to analyze
+ - the image analysis prompt, telling the model how and what to analyze
  - the image URL as text, which will be useful for showing the original image later
  - the author information, used for attribution
- - the image URL as an `image_url`, which is used to tell the AI that this is an image that it should fetch and take a look at
+ - the image URL as an `image_url`, which is used to tell the model that this is an image that it should fetch and take a look at
 
-After the user's messages, we also set an assistant message to prefill the expected assistant's response. Because we want the AI to output JSON, we can help steer it in the right direction by showing it that it's already started outputting valid JSON - now it just needs to continue with it. Without prefilling, the assistant might add remarks in the beginning before outputting JSON, such as "Great, let me do that!" or "Okay, I will create the JSON."
+After the user's messages, we also set an assistant message to prefill the expected assistant's response. Because we want the model to output JSON, we can help steer it in the right direction by showing it that it's already started outputting valid JSON - now it just needs to continue with it. Without prefilling, the assistant might add remarks in the beginning before outputting JSON, such as "Great, let me do that!" or "Okay, I will create the JSON."
 
 Let's take a quick look at the prompt we're using to analyze our images. Open `src/prompt.ts` and you'll see this prompt:
 
@@ -129,7 +144,7 @@ If we open up [the image](https://images.unsplash.com/photo-1516610627349-1b52a4
 
 Before performing a batch operation on thousands of images, it's important to test and fine-tune your prompt to make sure it works on all types of images. Edge cases might arise, and it's important to make sure your prompt can handle them properly. 
 
-For example: what might happen if the author's name or username are not available in the dataset? Should we instruct the AI to fill in empty data with "Unknown", or do we want to handle it ourselves when viewing the results later? How you handle these cases is dependent on your use case.
+For example: what might happen if the author's name or username are not available in the dataset? Should we instruct the model to fill in empty data with "Unknown", or do we want to handle it ourselves when viewing the results later? How you handle these cases is dependent on your use case.
 
 ### Uploading the JSONL File to Groq
 
@@ -220,7 +235,7 @@ Open `gallery.html` in a web browser - you can drag it into your web browser to 
 
 The web page will display all the results of the batch job as an image galllery. Each image is accompanied by the author's name (which links to their profile), the generated description, tags, and even the dominant color.
 
-All of these fields were parsed out of the JSON that we told the AI to generate for all of these images. Now we can easily sort and search through these images that were previously uncategorized! Try clicking on tags to filter by tag, or type text into the search box at the top.
+All of these fields were parsed out of the JSON that we told the model to generate for all of these images. Now we can easily sort and search through these images that were previously uncategorized! Try clicking on tags to filter by tag, or type text into the search box at the top.
 
 ## Next Steps
 
