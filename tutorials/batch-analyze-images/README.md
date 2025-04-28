@@ -98,7 +98,7 @@ In the messages array, the user has a few pieces of content in their messages:
  - the author information, used for attribution
  - the image URL as an `image_url`, which is used to tell the model that this is an image that it should fetch and take a look at
 
-After the user's messages, we also set an assistant message to prefill the expected assistant's response. Because we want the model to output JSON, we can help steer it in the right direction by showing it that it's already started outputting valid JSON - now it just needs to continue with it. Without prefilling, the assistant might add remarks in the beginning before outputting JSON, such as "Great, let me do that!" or "Okay, I will create the JSON."
+To ensure that we always receive valid JSON, we can set the `response_format` to `{ type: "json_object" }`. When using this parameter, make sure to tell the model to output JSON in your prompt. If JSON generation fails, you'll receive a [400 error](https://console.groq.com/docs/errors) with a message saying that JSON generation failed, and you might need to adjust your prompt. 
 
 Let's take a quick look at the prompt we're using to analyze our images. Open `src/prompt.ts` and you'll see this prompt:
 
