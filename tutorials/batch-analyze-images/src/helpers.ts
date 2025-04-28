@@ -80,14 +80,10 @@ export const createJsonlFile = async (num_images: number): Promise<JsonlFileLine
                                 }
                             },
                         ]
-                    },
-                    {
-                        role: "assistant",
-                        // Prefill assistant response
-                        content: "```json"
                     }
                 ],
-                stop: "```"
+                // Ensure that we always get a JSON object back
+                response_format: { type: "json_object" }
             }
         });
     }
