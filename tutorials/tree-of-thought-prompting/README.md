@@ -39,8 +39,8 @@ GROQ_API_KEY=your-groq-api-key-here
 ### Run the Script
 
 ```bash
-python BFS.py
-python DFS.py
+python BFS_tree_of_thought.py
+python DFS_tree_of_thought.py
 ```
 
 You'll be prompted to:
