@@ -84,4 +84,5 @@ Pull requests and forks are welcome! Open an issue for bugs, questions, or featu
 
 ## Contact:
 Author: Bertan Berker
+
 LinkedIn: https://www.linkedin.com/in/bertan-berker/
