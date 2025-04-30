@@ -54,7 +54,7 @@ You'll be prompted to:
 
 This project is also notebook-friendly! You can use the "Tree_of_Thought_Reasoning.ipynb" script for interactive experimentation.
 
-Or you can build a frontend and connect it with a simple Flask API (API.py) that utilizes the tree of thought reasoning for answer generation.
+Or you can build a frontend and connect it with a simple Flask API (API.py) that utilizes the tree of thought reasoning for answer generation. This Flask API powers the reasoning engine for the app using a Tree of Thought approach. It receives user prompts at /api/chat, builds a reasoning tree via depth-first search (DFS), scores all possible reasoning paths, and returns the best summarized output. It also includes full CORS support for local frontend communication.
 
 ---
 
