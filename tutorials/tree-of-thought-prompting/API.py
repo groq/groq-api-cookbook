@@ -74,5 +74,5 @@ def chat():
 
 
 if __name__ == '__main__':
-    print("Server starting on http://localhost:8000")
-    app.run(debug=True, port=8000)
+    print("Server starting on http://localhost:3000")
+    app.run(debug=True, port=3000)
