@@ -3,3 +3,5 @@ groq
 networkx
 matplotlib
 pygraphviz
+flask
+flask_cors
