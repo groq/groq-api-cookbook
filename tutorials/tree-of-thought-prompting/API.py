@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
 from dotenv import load_dotenv
-from DFS import dfs_reasoning_solver_full_tree, get_all_paths_from_root, score_reasoning_path, summarize_best_path
+from DFS_tree_of_thought import dfs_reasoning_solver_full_tree, get_all_paths_from_root, score_reasoning_path, summarize_best_path
 
 # Initialize Flask app
 app = Flask(__name__)
