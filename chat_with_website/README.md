@@ -18,6 +18,7 @@ Website Guru is a Streamlit application that allows you to interact with and ask
 - sentence-transformers
 - faiss-cpu
 - python-dotenv
+- bs4
 
 ## Installation
 

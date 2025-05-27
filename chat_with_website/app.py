@@ -39,7 +39,8 @@ with c1:
 with c2:
     llm_model_name = st.selectbox(
         "What model would you like to use?",
-        ("mixtral-8x7b-32768", "llama3-8b-8192", "llama3-70b-8192", "gemma-7b-it", "gemma2-9b-it")
+        ("meta-llama/llama-4-scout-17b-16e-instruct", "llama-3.3-70b-versatile", "gemma2-9b-it")
+
     )
 
 # Input for user prompt
