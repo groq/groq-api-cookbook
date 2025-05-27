@@ -1,4 +1,5 @@
 import asyncio
+import io
 from groq import AsyncGroq
 
 
@@ -6,7 +7,7 @@ from groq import AsyncGroq
 async def main() -> None:
   
 
-    client = AsyncGroq()
+    client = AsyncGroq(api_key=os.getenv("GROQ_API_KEY"))
 
     
     messages = [
@@ -20,7 +21,7 @@ async def main() -> None:
 
         chat_completion = await client.chat.completions.create(
             messages=messages,
-            model="mixtral-8x7b-32768",
+            model="meta-llama/llama-4-scout-17b-16e-instruct",
             temperature=0.5,
             max_tokens=1024,
             top_p=1,

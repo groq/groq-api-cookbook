@@ -1,5 +1,6 @@
 import asyncio
 import json
+import os
 from pathlib import Path
 from groq import AsyncGroq
 
@@ -22,7 +23,7 @@ async def save_history(messages):
 
 async def main() -> None:
     messages = await load_history()
-    client = AsyncGroq()
+    client = AsyncGroq(api_key=os.getenv("GROQ_API_KEY"))
 
     try:
         while True:
@@ -35,7 +36,7 @@ async def main() -> None:
 
             stream = await client.chat.completions.create(
                 messages=messages,
-                model="mixtral-8x7b-32768",
+                model="meta-llama/llama-4-scout-17b-16e-instruct",
                 temperature=0.5,
                 max_tokens=1024,
                 top_p=1,
