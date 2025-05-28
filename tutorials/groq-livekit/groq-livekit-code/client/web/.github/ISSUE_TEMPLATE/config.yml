@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Slack Community Chat
+    url: https://livekit.io/join-slack
+    about: Ask questions and discuss with other LiveKit users in real time.
