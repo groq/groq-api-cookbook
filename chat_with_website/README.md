@@ -24,17 +24,17 @@ Website Guru is a Streamlit application that allows you to interact with and ask
 
 1. Install the required Python packages:
 	
-	pip install -r requirements.txt
+	`pip install -r requirements.txt`
 
 2. Create a .env file in the project directory and add your Groq API key:
 
-	GROQ_API_KEY=your_groq_api_key
+	`GROQ_API_KEY=your_groq_api_key`
 
 ## Usage
 
 1. Run the Streamlit app:
 
-	streamlit run app.py
+	`streamlit run app.py`
 
 2. Open your web browser and go to http://localhost:8501.
 
