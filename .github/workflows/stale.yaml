@@ -24,3 +24,4 @@ jobs:
           days-before-pr-stale: 30
           days-before-pr-close: 7
           exempt-pr-labels: "dependencies,security"
+          operations-per-run: 60 # Default is 30

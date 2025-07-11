@@ -1,0 +1,17 @@
+{
+  "name": "groq-batch-images-tutorial",
+  "version": "1.0.0",
+  "description": "A tutorial for using Groq's batch API to analyze images",
+  "scripts": {
+    "start": "vite-node src/index.ts",
+    "check-status": "vite-node src/check-status.ts",
+    "download-results": "vite-node src/download-results.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1"
+  },
+  "dependencies": {
+    "groq-sdk": "0.20.0",
+    "vite-node": "^3.1.1"
+  }
+}
