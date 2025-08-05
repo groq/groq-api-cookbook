@@ -56,6 +56,7 @@ Are you ready to cook? 🚀 This is a collection of example code and guides for 
 - [LiteLLM Proxy with Groq](/tutorials/litellm-proxy-groq): Call Groq through the LiteLLM proxy.
 - [Toolhouse with Groq](/tutorials/toolhouse-for-tool-use-with-groq-api): Use Toolhouse to create simple tool integrations with Groq.
 - [OpenTelemetry with Groq](/tutorials/opentelemetry-observability-groq): Integrate OpenTelemetry tracing and metrics for insights into Groq usage.
+- [Maxim with Groq](/tutorials/maxim-groq-tracing): Integrate Maxim AI for observability and evaluation of Groq based agents.
 
 ### Agentic
 - [Mixture of Agents](/tutorials/mixture-of-agents): Create a mixture-of-agents system powered by Groq.
