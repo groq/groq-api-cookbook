@@ -61,6 +61,10 @@ Are you ready to cook? 🚀 This is a collection of example code and guides for 
 - [Mixture of Agents](/tutorials/mixture-of-agents): Create a mixture-of-agents system powered by Groq.
 - [Game Recap with MoA](/tutorials/agno-mixture-of-agents): Use a mixture-of-agents approach to generate comprehensive MLB game recaps.
 
+## External Resources
+
+### Prompt Tools
+- [God Tier Prompts](https://www.godtierprompts.com): A community driven leaderboard where the best prompts rise to the top.
 
 ## Have questions?
 Join our [Developer Community Forum](https://community.groq.com/) where we discuss useful tools, share guidance, and collaborate with industry professionals, or chat with us on our [Discord](https://discord.com/invite/groq)!
