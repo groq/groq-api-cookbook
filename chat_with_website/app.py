@@ -10,7 +10,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain  # F
 from langchain_core.prompts import ChatPromptTemplate  # For creating prompt templates
 from langchain.chains import create_retrieval_chain  # For creating retrieval chains
 from dotenv import load_dotenv  # For loading environment variables from a .env file
-import time #Used to measure time taken to run the code
+import time  # Used to measure time taken to run the code
 
 # Load environment variables from .env file
 load_dotenv()
