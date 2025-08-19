@@ -66,7 +66,7 @@ def transcribe_single_chunk(client: Groq, chunk: AudioSegment, chunk_num: int, t
                 result = client.audio.transcriptions.create(
                     file=("chunk.flac", temp_file, "audio/flac"),
                     model="whisper-large-v3",
-                    language="en", # We highly recommend specifying the language of your audio if you know it
+                    language="en",  # We highly recommend specifying the language of your audio if you know it
                     response_format="verbose_json"
                 )
                 api_time = time.time() - start_time

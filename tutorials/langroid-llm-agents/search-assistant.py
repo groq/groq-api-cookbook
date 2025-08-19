@@ -40,7 +40,7 @@ def main() -> None:
     load_dotenv()
 
     llm_config = lm.OpenAIGPTConfig(
-        chat_model=MODEL, # or lr.OpenAIChatModel.GPT4_TURBO
+        chat_model=MODEL,  # or lr.OpenAIChatModel.GPT4_TURBO
         chat_context_length=8192,
         temperature=0,
         max_output_tokens=200,

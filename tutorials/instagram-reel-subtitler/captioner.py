@@ -33,8 +33,8 @@ def transcribe_audio(mp3_file):
     with open(mp3_file, "rb") as file:
         # Create a transcription of the audio file
         transcription = client.audio.transcriptions.create(
-            file=(mp3_file, file.read()), # Required audio file
-            model="whisper-large-v3-turbo", # Required model to use for transcription
+            file=(mp3_file, file.read()),  # Required audio file
+            model="whisper-large-v3-turbo",  # Required model to use for transcription
             timestamp_granularities=["word"],
             response_format="verbose_json",  # Optional
             language="en",  # Optional
@@ -83,5 +83,5 @@ text_clip_list = add_subtitles(segments, width, fontsize=40)
 # Create a CompositeVideoClip that we write to a file
 final_clip = CompositeVideoClip([original_clip] + text_clip_list)
 
-final_clip.write_videofile("final.mp4", codec="libx264") # Mac users may want to add this within the parentheses: ,audio_codec="aac"
+final_clip.write_videofile("final.mp4", codec="libx264")  # Mac users may want to add this within the parentheses: ,audio_codec="aac"
 print("Subtitled video saved as:", output_file)
