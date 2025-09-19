@@ -31,6 +31,11 @@ Are you ready to cook? 🚀 This is a collection of example code and guides for 
 - [Stock Market Function Calling](/tutorials/llama3-stock-market-function-calling): Learn how to use function calling with AI to parse stock market data.
 - [Parallel Tool Use](/tutorials/parallel-tool-use): Learn how to use function calling with AI to use multiple tools at the same time.
 
+### Model Context Protocol (MCP)
+- [Tavily MCP with Groq](/tutorials/mcp-tavily): Build a real-time research agent with the Tavily MCP and Groq API.
+- [HuggingFace MCP with Groq](/tutorials/mcp-huggingface): Retrieve real-time HuggingFace model data with the HuggingFace MCP and Groq API.
+- [Parallel MCP with Groq](/tutorials/mcp-parallel): Real-time search with access to live data with the Parallel MCP and Groq API (along with a performance comparison against OpenAI).
+
 ### Retrieval-Augmented Generation (RAG)
 - [Benchmarking RAG with Langchain](tutorials/benchmarking-rag-langchain): Learn how to benchmark a RAG pipeline with Llama3 and LangChain.
 - [Presidential Speeches RAG](/tutorials/presidential-speeches-rag): Learn how to use RAG to find relevant presidential speeches from input text.
@@ -46,7 +51,6 @@ Are you ready to cook? 🚀 This is a collection of example code and guides for 
 
 ### Integrations
 - [Gradio with Groq](/tutorials/groq-gradio): Build a Gradio app powered by Groq.
-- [Tavily with Groq](/tutorials/tavily-web-access): Build a real-time research agent with Tavily and Groq.
 - [Streamlit with Groq](/tutorials/groq_streamlit_demo): Build a chat app in Streamlit powered by Groq. 
 - [Portkey with Groq](/tutorials/Portkey-with-Groq): Integrate Portkey for AI observability into Groq usage.
 - [Composio with Groq](/tutorials/composio-newsletter-summarizer-agent): Integrate Composio with Groq for pre-defined actions for applications like Gmail, Slack, and GitHub.
