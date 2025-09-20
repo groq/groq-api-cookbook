@@ -32,6 +32,7 @@ Are you ready to cook? 🚀 This is a collection of example code and guides for 
 - [Parallel Tool Use](/tutorials/parallel-tool-use): Learn how to use function calling with AI to use multiple tools at the same time.
 
 ### Model Context Protocol (MCP)
+- [Exa MCP](/tutorials/mcp-exa): Use Exa's web search and web crawling tools to get real-time information from the internet. Find relevant search results, extract data from websites, and run deep-research.
 - [Tavily MCP with Groq](/tutorials/mcp-tavily): Build a real-time research agent with the Tavily MCP and Groq API.
 - [HuggingFace MCP with Groq](/tutorials/mcp-huggingface): Retrieve real-time HuggingFace model data with the HuggingFace MCP and Groq API.
 - [Parallel MCP with Groq](/tutorials/mcp-parallel): Real-time search with access to live data with the Parallel MCP and Groq API (along with a performance comparison against OpenAI).
