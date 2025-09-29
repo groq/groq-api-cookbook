@@ -39,7 +39,7 @@ Are you ready to cook? 🚀 This is a collection of example code and guides for 
 - [Tavily MCP with Groq](/tutorials/mcp-tavily): Build a real-time research agent with the Tavily MCP and Groq API.
 - [HuggingFace MCP with Groq](/tutorials/mcp-huggingface): Retrieve real-time HuggingFace model data with the HuggingFace MCP and Groq API.
 - [Parallel MCP with Groq](/tutorials/mcp-parallel): Real-time search with access to live data with the Parallel MCP and Groq API (along with a performance comparison against OpenAI).
-- [Vercel MCP with Groq](/tutorials/mcp-vercel): Integrate Vercel's MCP server with Groq API for deployment and project management.
+- [Vercel MCP with Groq](/tutorials/mcp-vercel): Integrate Vercel's MCP server with Groq API to search Vercel docs, monitor deployments, search domain availability, and more.
 
 ### Retrieval-Augmented Generation (RAG)
 - [Benchmarking RAG with Langchain](tutorials/benchmarking-rag-langchain): Learn how to benchmark a RAG pipeline with Llama3 and LangChain.
