@@ -36,6 +36,7 @@ This repository contains a collection of tutorials, sample code, and guidelines 
 - [Verified SQL Function Calling](/tutorials/02-tool-use/verified-sql-function-calling): Learn how to build verified and validated SQL queries with function calling.
 
 ### 03. Model Context Protocol (MCP)
+- [Box MCP with Groq](/tutorials/03-mcp/mcp-box): Learn how to securely access and interact with private Box content using Groq inference + Box's hosted MCP server.
 - [Browser Use MCP](/tutorials/03-mcp/mcp-browseruse): Equip models via Groq API with Browser Use's tools to enable autonomous website browsing, information extraction, and web pages interaction.
 - [BrowserBase MCP](/tutorials/03-mcp/mcp-browserbase): Equip models via Groq API with Browserbase's MCP server for web automation using natural language commands, including tools for web interaction and data extraction.
 - [Firecrawl MCP](/tutorials/03-mcp/mcp-firecrawl): Equip GPT-OSS 120B via Groq API with enterprise-grade web scraping capabilities, intelligent data extraction, structured parsing, and deep web research.
