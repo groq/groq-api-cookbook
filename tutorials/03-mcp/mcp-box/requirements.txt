@@ -1,0 +1,2 @@
+box_sdk_gen==1.17.0
+openai==1.75.0
