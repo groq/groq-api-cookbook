@@ -41,6 +41,7 @@ This repository contains a collection of tutorials, sample code, and guidelines 
 - [BrowserBase MCP](/tutorials/03-mcp/mcp-browserbase): Equip models via Groq API with Browserbase's MCP server for web automation using natural language commands, including tools for web interaction and data extraction.
 - [Firecrawl MCP](/tutorials/03-mcp/mcp-firecrawl): Equip GPT-OSS 120B via Groq API with enterprise-grade web scraping capabilities, intelligent data extraction, structured parsing, and deep web research.
 - [Exa MCP](/tutorials/03-mcp/mcp-exa): Use Exa's web search and web crawling tools to get real-time information from the internet. Find relevant search results, extract data from websites, and run deep-research.
+- [E2B MCP Gateway](/tutorials/03-mcp/mcp-e2b): Learn how to use E2B's MCP gateway to run multiple MCP servers (Exa + Browserbase) together in an isolated sandbox for AI research workflows.
 - [Tavily MCP with Groq](/tutorials/03-mcp/mcp-tavily): Build a real-time research agent with the Tavily MCP and Groq API.
 - [HuggingFace MCP with Groq](/tutorials/03-mcp/mcp-huggingface): Retrieve real-time HuggingFace model data with the HuggingFace MCP and Groq API.
 - [Parallel MCP with Groq](/tutorials/03-mcp/mcp-parallel): Real-time search with access to live data with the Parallel MCP and Groq API (along with a performance comparison against OpenAI).
