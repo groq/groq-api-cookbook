@@ -2,6 +2,14 @@
 
 This tutorial demonstrates how to connect Groq's ultra-fast inference with Google Workspace (Gmail, Google Calendar, and Google Drive) using Model Context Protocol (MCP) connectors.
 
+## Video Walkthrough
+
+https://github.com/user-attachments/assets/0b3e6805-a5f9-4ac8-a9a0-bc0beaee8590
+
+*Watch how to integrate Gmail, Calendar, and Drive with Groq's MCP connectors*
+
+---
+
 ## What You'll Learn
 
 - How to authenticate with Google Workspace using OAuth 2.0
