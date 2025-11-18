@@ -52,6 +52,64 @@ To use the Google Workspace MCP connectors, you need to authorize your OAuth tok
 pip install -r requirements.txt
 ```
 
+## Testing with curl
+
+If you prefer to test the connectors directly without Python, use these curl commands:
+
+### Gmail Connector
+```bash
+curl -X POST https://api.groq.com/api/openai/v1/responses \
+  -H "Authorization: Bearer YOUR_GROQ_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openai/gpt-oss-20b",
+    "tools": [{
+      "type": "mcp",
+      "server_label": "gmail",
+      "connector_id": "connector_gmail",
+      "authorization": "YOUR_GMAIL_OAUTH_TOKEN",
+      "require_approval": "never"
+    }],
+    "input": "Show me my last 3 unread emails"
+  }'
+```
+
+### Google Calendar Connector
+```bash
+curl -X POST https://api.groq.com/api/openai/v1/responses \
+  -H "Authorization: Bearer YOUR_GROQ_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openai/gpt-oss-20b",
+    "tools": [{
+      "type": "mcp",
+      "server_label": "google_calendar",
+      "connector_id": "connector_googlecalendar",
+      "authorization": "YOUR_CALENDAR_OAUTH_TOKEN",
+      "require_approval": "never"
+    }],
+    "input": "What 3 events do I have next on my primary google calendar"
+  }'
+```
+
+### Google Drive Connector
+```bash
+curl -X POST https://api.groq.com/api/openai/v1/responses \
+  -H "Authorization: Bearer YOUR_GROQ_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openai/gpt-oss-20b",
+    "tools": [{
+      "type": "mcp",
+      "server_label": "googledrive",
+      "connector_id": "connector_googledrive",
+      "authorization": "YOUR_DRIVE_OAUTH_TOKEN",
+      "require_approval": "never"
+    }],
+    "input": "Search for PDF files in my Google Drive"
+  }'
+```
+
 ## Quick Start
 
 1. Set up your environment variables:
