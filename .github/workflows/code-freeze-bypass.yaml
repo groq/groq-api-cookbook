@@ -1,0 +1,56 @@
+#####################################
+#       DO NOT EDIT DIRECTLY.       #
+# This file is managed by Terraform #
+#####################################
+
+name: "Code Freeze Bypass Status"
+
+on:
+  pull_request_target:
+    types:
+      - labeled
+      - unlabeled
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  update-status:
+    runs-on: ubuntu-latest
+    env:
+      BYPASS_LABEL: bypass-code-freeze
+    steps:
+      - name: Emit bypass status
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const action = context.payload.action;
+            const label = context.payload.label?.name || "";
+            if (!["labeled", "unlabeled"].includes(action)) {
+              core.info(`Unhandled action: ${action}`);
+              return;
+            }
+            const owner = context.payload.repository.owner.login;
+            const repo = context.payload.repository.name;
+            const topicsResponse = await github.rest.repos.getAllTopics({ owner, repo });
+            const topics = topicsResponse.data.names || [];
+            if (!topics.includes("code-freeze")) {
+              core.info(`Repository ${owner}/${repo} is not marked with code-freeze topic; skipping enforcement.`);
+              return;
+            }
+
+            if (label !== process.env.BYPASS_LABEL) {
+              core.setFailed(
+                `Label '${label}' is not allowed while ${owner}/${repo} is in code freeze. Only '${process.env.BYPASS_LABEL}' may change.`,
+              );
+              return;
+            }
+
+            if (action === "labeled") {
+              core.info("Bypass label applied; workflow passing.");
+              return;
+            }
+
+            core.setFailed("Bypass label removed; code freeze enforced.");
