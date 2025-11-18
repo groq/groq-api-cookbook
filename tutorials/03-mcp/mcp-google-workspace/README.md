@@ -21,18 +21,30 @@ This tutorial demonstrates how to connect Groq's ultra-fast inference with Googl
 
 ## Required OAuth Scopes
 
-### Gmail
-- `https://www.googleapis.com/auth/gmail.readonly` - Read email
-- `https://www.googleapis.com/auth/gmail.send` - Send email
-- `https://www.googleapis.com/auth/gmail.modify` - Modify emails
+To use the Google Workspace MCP connectors, you need to authorize your OAuth token with these **exact scopes**:
 
-### Google Calendar
-- `https://www.googleapis.com/auth/calendar` - Full calendar access
-- `https://www.googleapis.com/auth/calendar.events` - Manage events
+**From Gmail API v1:**
+- `https://www.googleapis.com/auth/gmail.modify` - Read and modify Gmail messages
 
-### Google Drive
-- `https://www.googleapis.com/auth/drive.readonly` - Read-only access
-- `https://www.googleapis.com/auth/drive` - Full Drive access
+**From Google Calendar API v3:**
+- `https://www.googleapis.com/auth/calendar.events` - Manage calendar events
+
+**From Drive API v3:**
+- `https://www.googleapis.com/auth/drive.readonly` - Download the content of Drive files
+
+**From Google OAuth2 API v2:**
+- `https://www.googleapis.com/auth/userinfo.email` - View your email address
+- `https://www.googleapis.com/auth/userinfo.profile` - View your basic profile info
+
+### How to Get OAuth Token
+
+1. Visit [Google OAuth Playground](https://developers.google.com/oauthplayground/)
+2. In Step 1, select **all five scopes** listed above
+3. Click "Authorize APIs" and sign in
+4. In Step 2, click "Exchange authorization code for tokens"
+5. Copy the Access token (starts with `ya29.`)
+
+**Note:** OAuth tokens expire after ~1 hour. Refresh as needed.
 
 ## Installation
 
