@@ -1,7 +1,0 @@
-.env
-dataset/
-node_modules/
-pnpm-lock.yaml
-batch.jsonl
-batch-*.jsonl
-.env.local

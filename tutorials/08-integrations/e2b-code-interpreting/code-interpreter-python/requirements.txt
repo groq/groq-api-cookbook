@@ -1,3 +1,0 @@
-groq==0.6.0
-e2b-code-interpreter==0.0.10
-python-dotenv==1.0.0

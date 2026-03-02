@@ -1,7 +1,0 @@
-.venv
-.env
-venv
-phienv
-.DS_Store
-.ipynb_checkpoints
-*/.ipynb_checkpoints/*
