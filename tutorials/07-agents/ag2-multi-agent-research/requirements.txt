@@ -1,0 +1,2 @@
+ag2[groq,duckduckgo]>=0.11.0
+jupyter

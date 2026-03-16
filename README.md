@@ -72,6 +72,7 @@ This repository contains a collection of tutorials, sample code, and guidelines 
 - [Composio Newsletter Summarizer Agent](/tutorials/07-agents/composio-newsletter-summarizer-agent): Build an agent that summarizes newsletters using Composio and Groq.
 - [aiXplain Agents](/tutorials/07-agents/aiXplain-agents): Build intelligent agents using aiXplain's platform with Groq.
 - [Minions with Groq](/tutorials/07-agents/minions-groq): Create lightweight agent workers (minions) for distributed tasks.
+- [AG2 Multi-Agent Research](/tutorials/07-agents/ag2-multi-agent-research): Build a multi-agent research assistant using AG2 with Groq and live web search.
 
 ### 08. Integrations & Frameworks
 - [Gradio with Groq](/tutorials/08-integrations/groq-gradio): Learn how to build a full-stack application with Gradio powered by Groq.
