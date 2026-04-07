@@ -25,6 +25,7 @@ This repository contains a collection of tutorials, sample code, and guidelines 
 - [Groq Quickstart Conversational Chatbot](/tutorials/01-quickstart/groq-quickstart-conversational-chatbot): Build your first conversational chatbot with Groq.
 - [Chat History Management](/tutorials/01-quickstart/chat-history): Learn how to manage and persist chat history in your AI applications.
 - [Batch Processing](/tutorials/01-quickstart/batch-processing): Process hundreds of requests asynchronously using Groq's batch APIs.
+- [Build a System-Wide AI Assistant with Groq and Python](/tutorials/01-quickstart/simple-hotkey-gui/): Make a simple, view-on-command GUI for interacting with Groq API model.
 
 ### 02. Tool Use (Function Calling)
 - [eCommerce Function Calling](/tutorials/02-tool-use/function-calling-101-ecommerce): Learn how to use function calling with LLMs to create orders and get prices on products.
