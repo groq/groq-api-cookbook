@@ -74,6 +74,7 @@ This repository contains a collection of tutorials, sample code, and guidelines 
 - [Minions with Groq](/tutorials/07-agents/minions-groq): Create lightweight agent workers (minions) for distributed tasks.
 
 ### 08. Integrations & Frameworks
+- [AFK with Groq](/tutorials/08-integrations/afk-groq): Learn how to run AFK coding-agent sessions with Groq models.
 - [Gradio with Groq](/tutorials/08-integrations/groq-gradio): Learn how to build a full-stack application with Gradio powered by Groq.
 - [Streamlit with Groq](/tutorials/08-integrations/groq_streamlit_demo): Learn how to build a full-stack chat application with Streamlit powered by Groq.
 - [LangChain Conversational Chatbot](/tutorials/08-integrations/conversational-chatbot-langchain): Build conversational chatbots using LangChain and Groq.
