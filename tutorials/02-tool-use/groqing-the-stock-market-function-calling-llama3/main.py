@@ -124,7 +124,7 @@ def call_functions(llm_with_tools, user_prompt):
 
 
 
-llm = ChatGroq(groq_api_key = os.getenv('GROQ_API_KEY'),model = 'llama3-70b-8192')
+llm = ChatGroq(groq_api_key = os.getenv('GROQ_API_KEY'),model = 'llama-3.3-70b-versatile')
 
 tools = [get_stock_info, get_historical_price]
 llm_with_tools = llm.bind_tools(tools)

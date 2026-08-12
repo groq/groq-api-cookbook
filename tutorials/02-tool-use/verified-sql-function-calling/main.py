@@ -57,7 +57,7 @@ def execute_duckdb_query_function_calling(query_name,verified_queries_dict):
     return query_result
 
 
-model = "llama3-8b-8192"
+model = "llama-3.1-8b-instant"
 
 # Initialize the Groq client
 groq_api_key = os.getenv('GROQ_API_KEY')

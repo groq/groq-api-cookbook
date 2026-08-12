@@ -91,7 +91,7 @@ def main():
     and initiates a conversation in the command line.
     """
 
-    model = "llama3-70b-8192"
+    model = "llama-3.3-70b-versatile"
 
     # Get the Groq API key and create a Groq client
     groq_api_key = os.getenv('GROQ_API_KEY')
