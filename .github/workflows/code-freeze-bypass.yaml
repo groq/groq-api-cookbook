@@ -3,7 +3,7 @@
 # This file is managed by Terraform #
 #####################################
 
-name: "Code Freeze Bypass Status"
+name: 'Code Freeze Bypass Status'
 
 on:
   pull_request_target:
