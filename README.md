@@ -45,6 +45,7 @@ This repository contains a collection of tutorials, sample code, and guidelines 
 - [Tavily MCP with Groq](/tutorials/03-mcp/mcp-tavily): Build a real-time research agent with the Tavily MCP and Groq API.
 - [HuggingFace MCP with Groq](/tutorials/03-mcp/mcp-huggingface): Retrieve real-time HuggingFace model data with the HuggingFace MCP and Groq API.
 - [Parallel MCP with Groq](/tutorials/03-mcp/mcp-parallel): Real-time search with access to live data with the Parallel MCP and Groq API (along with a performance comparison against OpenAI).
+- [Webz.io MCP with Groq](/tutorials/03-mcp/mcp-webz): Search global news with the Webz.io MCP and Groq API, filtering by sentiment, ticker, country, and other article metadata.
 
 ### 04. Retrieval-Augmented Generation (RAG)
 - [Benchmarking RAG with Langchain](/tutorials/04-rag/benchmarking-rag-langchain): Learn how to benchmark a RAG pipeline with LangChain.
