@@ -84,6 +84,7 @@ This repository contains a collection of tutorials, sample code, and guidelines 
 - [JigsawStack Prompt Engine](/tutorials/08-integrations/jigsawstack-prompt-engine): Learn how to automate your workflow and choose the best LLM for your prompts using JigsawStack's Prompt Engine powered by Groq.
 - [JigsawStack Prompt Engine (Replit)](/tutorials/08-integrations/jigsawstack-prompt-engine-replit): Replit-ready JigsawStack example.
 - [LiteLLM Proxy with Groq](/tutorials/08-integrations/litellm-proxy-groq): Learn how to call Groq API through the LiteLLM proxy.
+- [schemagate: Smaller Text-to-SQL Prompts](/tutorials/08-integrations/schemagate-text-to-sql): Send Groq only the tables a question needs, measure the input tokens saved, and keep tables a caller may not read out of the prompt.
 - [Toolhouse with Groq](/tutorials/08-integrations/toolhouse-for-tool-use-with-groq-api): Learn how to use Toolhouse to create simple tool integrations with Groq.
 
 ### 09. Observability & Evaluation
